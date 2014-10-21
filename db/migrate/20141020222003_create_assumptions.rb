@@ -3,11 +3,11 @@ class CreateAssumptions < ActiveRecord::Migration
     create_table :assumptions do |t|
     	t.references :project_id, index: true
 			t.text :company_name
-			t.text :tax_rate,0.3
-			t.text :interest_rate
-			t.text :future_growth
+			t.decimal :tax_rate, :precision => 6, :scale => 4
+			t.decimal :interest_rate, :precision => 6, :scale => 4
+			t.decimal :future_growth, :precision => 6, :scale => 4
 
-
+      
 
       t.timestamps
     end
