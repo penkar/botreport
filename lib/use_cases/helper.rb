@@ -1,0 +1,7 @@
+require_relative 'assumptions.rb'
+require_relative 'balancesheet.rb'
+require_relative 'incomestmt.rb'
+require_relative 'cashflowstmt.rb'
+require_relative 'reader.rb'
+require_relative 'ratios.rb'
+require_relative 'record.rb'

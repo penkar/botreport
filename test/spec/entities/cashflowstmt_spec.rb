@@ -1,12 +1,12 @@
 require_relative '../spec_helper.rb'
 
-describe Bot_Report::Cashflow do 
+describe Bot_Report::Cash_flow do 
 	xit 'Should be able to pull net income from income statement if not present.' do
 		hash = {
 			"net_income"=>[["net_income", "1",'2']]
 		}
 		a = Bot_Report::Income_stmt.new(hash)
-		b = Bot_Report::Cashflow.new(hash)
+		b = Bot_Report::Cash_flow.new(hash)
 		b.net_income_line
 		expect(b.file['net_income']).to eq([1,2.0])
 	end
@@ -24,7 +24,7 @@ describe Bot_Report::Cashflow do
 			"other"=>[["other", "1",'2']],
 			"cf_change_in_assets"=>[["cf_change_in_assets", "1",'2']]
 		}
-		a = Bot_Report::Cashflow.new(hash)
+		a = Bot_Report::Cash_flow.new(hash)
 		a.net_cash_flow_operations
 		expect(a.file['net_cash_flow_operations']).to eq([10,20.0])
 	end
@@ -40,7 +40,7 @@ describe Bot_Report::Cashflow do
 			"proceeds_from_divestiture"=>[["proceeds_from_divestiture", "1",'2']],
 			"acquisitions"=>[["acquisitions", "1",'2']]
 		}
-		a = Bot_Report::Cashflow.new(hash)
+		a = Bot_Report::Cash_flow.new(hash)
 		a.net_cash_flow_investing
 		expect(a.file['net_cash_flow_investing']).to eq([8,16.0])
 	end
@@ -52,7 +52,7 @@ describe Bot_Report::Cashflow do
 			"proceeds_from_debt_issuance"=>[["proceeds_from_debt_issuance", "1",'2']],
 			"debt_repayment"=>[["debt_repayment", "1",'2']]
 		}
-		a = Bot_Report::Cashflow.new(hash)
+		a = Bot_Report::Cash_flow.new(hash)
 		a.net_cash_flow_financing
 		expect(a.file['net_cash_flow_financing']).to eq([4,8.0])
 	end
@@ -66,7 +66,7 @@ describe Bot_Report::Cashflow do
 			"net_increase_decrease_cash_equivalents"=>[["net_increase_decrease_cash_equivalents", "1",'2']],
 			"cash_and_cash_equivalents_beg"=>[["cash_and_cash_equivalents_beg", "1",'2']]
 		}
-		a = Bot_Report::Cashflow.new(hash)
+		a = Bot_Report::Cash_flow.new(hash)
 		a.cash_and_cash_equivalents_end
 		expect(a.file['cash_and_cash_equivalents_end']).to eq([4,8.0])
 	end	

@@ -1,5 +1,5 @@
 module Bot_Report
-	class Cashflow
+	class Cash_flow
 		attr_accessor :file
 		def initialize(is_array)
 			@file = Hash.new(0)

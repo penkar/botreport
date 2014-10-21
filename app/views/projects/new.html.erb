@@ -1,8 +1,12 @@
 Create a new Report:
 
 <div>
-	<%= form_tag import_user_projects_path(current_user.id), multipart: true do %>
-		<%=file_field_tag :file %>
-		<%= submit_tag "Create New Report" %>
-	<% end %>
+	<%= form_for @project, url: {action: 'create'} do |f| %>
+	Report Name: <%= f.text_field :name %><br>
+	Report Description: <%= f.text_field :description %><br>
+		<%#= form_tag import_user_projects_path(current_user.id), multipart: true do %>
+			<%= f.file_field :file %>
+			<%= submit_tag "Create New Report" %>
+		<%# end %>
+	<% end %>	
 </div>
