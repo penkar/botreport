@@ -34,4 +34,5 @@ class Cashflow < ActiveRecord::Base
 			serialize :net_cash_flow_investing
 			serialize :net_cash_flow_financing
 			serialize :cash_and_cash_equivalents_end
+			serialize :net_cash_finance
 end
