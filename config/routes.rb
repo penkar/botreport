@@ -1,4 +1,14 @@
 Rails.application.routes.draw do
+  resources :users do 
+    resources :projects, except: [:edit] do
+      resources :incomestmts, except: [:edit, :update, :destroy, :index, :create] 
+      resources :cashflows, except: [:edit, :update, :destroy, :index, :create] 
+      resources :balancesheets, except: [:edit, :update, :destroy, :index, :create] 
+      resources :incomestmts, except: [:edit, :update, :destroy, :index, :create] 
+      resources :ratios, except: [:edit, :update, :destroy, :index, :create] 
+    end
+  end
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

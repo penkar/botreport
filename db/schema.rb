@@ -11,22 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141020233530) do
+ActiveRecord::Schema.define(version: 20141021030818) do
 
   create_table "assumptions", force: true do |t|
-    t.integer  "project_id_id"
     t.text     "company_name"
     t.decimal  "tax_rate",      precision: 6, scale: 4
     t.decimal  "interest_rate", precision: 6, scale: 4
     t.decimal  "future_growth", precision: 6, scale: 4
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "project_id"
   end
 
-  add_index "assumptions", ["project_id_id"], name: "index_assumptions_on_project_id_id"
-
   create_table "balance_sheets", force: true do |t|
-    t.integer  "project_id_id"
     t.text     "cash_and_cash_equivalents"
     t.text     "notes_and_accts_receivable_less_doubtful_amounts"
     t.text     "marketable_securities"
@@ -71,12 +68,10 @@ ActiveRecord::Schema.define(version: 20141020233530) do
     t.text     "equity"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "project_id"
   end
 
-  add_index "balance_sheets", ["project_id_id"], name: "index_balance_sheets_on_project_id_id"
-
   create_table "cashflows", force: true do |t|
-    t.integer  "project_id_id"
     t.text     "net_income"
     t.text     "cf_adjustments"
     t.text     "depreciation_and_amortization"
@@ -111,9 +106,8 @@ ActiveRecord::Schema.define(version: 20141020233530) do
     t.text     "cash_and_cash_equivalents_end"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "project_id"
   end
-
-  add_index "cashflows", ["project_id_id"], name: "index_cashflows_on_project_id_id"
 
   create_table "income_stmts", force: true do |t|
     t.integer  "revenue_segments_id"
@@ -135,17 +129,16 @@ ActiveRecord::Schema.define(version: 20141020233530) do
     t.text     "net_income"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "project_id"
   end
 
   create_table "projects", force: true do |t|
     t.string   "name"
     t.text     "description"
-    t.integer  "user_id_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
-
-  add_index "projects", ["user_id_id"], name: "index_projects_on_user_id_id"
 
   create_table "revenues", force: true do |t|
     t.string   "name"
