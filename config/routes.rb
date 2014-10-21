@@ -1,11 +1,14 @@
 Rails.application.routes.draw do
+  devise_for :users
+  root :to => 'users#index'
   resources :users do 
     resources :projects, except: [:edit] do
-      resources :incomestmts, except: [:edit, :update, :destroy, :index, :create] 
-      resources :cashflows, except: [:edit, :update, :destroy, :index, :create] 
-      resources :balancesheets, except: [:edit, :update, :destroy, :index, :create] 
-      resources :incomestmts, except: [:edit, :update, :destroy, :index, :create] 
-      resources :ratios, except: [:edit, :update, :destroy, :index, :create] 
+      collection { post :import }
+      resources :incomestmts, except: [:edit, :update, :destroy, :index, :create, :new] 
+      resources :cashflows, except: [:edit, :update, :destroy, :index, :create, :new] 
+      resources :balancesheets, except: [:edit, :update, :destroy, :index, :create, :new] 
+      resources :incomestmts, except: [:edit, :update, :destroy, :index, :create, :new] 
+      resources :ratios, except: [:edit, :update, :destroy, :index, :create, :new] 
     end
   end
   

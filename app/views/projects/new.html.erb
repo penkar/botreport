@@ -1,0 +1,8 @@
+Create a new Report:
+
+<div>
+	<%= form_tag import_user_projects_path(current_user.id), multipart: true do %>
+		<%=file_field_tag :file %>
+		<%= submit_tag "Create New Report" %>
+	<% end %>
+</div>

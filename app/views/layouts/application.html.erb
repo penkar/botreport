@@ -7,8 +7,26 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-BotReport - One Step Closer to the Robot Apocalypse
-<%= yield %>
+
+<div class="header">
+	<div style="float:left">
+		BotReport - One Step Closer to the Robot Apocalypse
+	</div>
+
+	<div style="float:right">
+		<% if current_user %>
+		  Welcome to my website! You are signed in as <%= current_user.email %>.
+		  <%= link_to 'sign out', destroy_user_session_path, :method => :delete %>
+		<% else %>
+		  Please <%= link_to 'sign in', new_user_session_path %> first.
+		<% end %>
+	</div>
+<div>
+
+<div>
+	<%= yield %>
+</div>
+
 
 </body>
 </html>
