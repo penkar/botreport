@@ -1,7 +1,8 @@
 ALL OPEN PROJECTS
 
 <ul>
-	<% @projects.each do |proj| %>
-		<li><%= proj.name %></li>
+	<li><%= @project.name %></li>
+	<% @project.balance_sheets.each do |balance_sheet| %>
+	<li><%= balance_sheet.cash_and_cash_equivalents %></li>
 	<% end %>
 </ul>

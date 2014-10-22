@@ -30,10 +30,10 @@ bal_sheet,income_taxes_payable,240
 bal_sheet,total_current_liabilities,14337
 bal_sheet,non_current_liabilities,0
 bal_sheet,long_term_debt,2988
-bal_sheet,deferred_revenue_non-current,100
-bal_sheet,income_taxes_non-current,2046
-bal_sheet,deferred_income_taxes_non-current,1872
-bal_sheet,other_long-term_liabilities,740
+bal_sheet,deferred_revenue_non_current,100
+bal_sheet,income_taxes_non_current,2046
+bal_sheet,deferred_income_taxes_non_current,1872
+bal_sheet,other_long_term_liabilities,740
 bal_sheet,long_term_obligations,0
 bal_sheet,stockholders_equity,0
 bal_sheet,stock_convertible,0

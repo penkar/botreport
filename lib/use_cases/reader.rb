@@ -31,8 +31,6 @@ module Bot_Report
 			statement = IncomeStmt.update(statement.id, hash)
 			
 			revenue = a.build_revenue_table
-			# pry
-			Revenue.create(revenue)
 		end
 
 		def create_balance_sheet(input_array)

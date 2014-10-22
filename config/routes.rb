@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
+  get 'home/login'
+
+  get '/home', to: 'home#login' 
+
   devise_for :users
-  root :to => 'users#index'
+  root :to => 'home#login'
   resources :users do 
     resources :projects, except: [:edit] do
       collection { post :import }

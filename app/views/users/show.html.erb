@@ -15,7 +15,7 @@ BOTREPORT Prime
 			<% @reports.each do |report| %>
 			<tr>
 				<td>Report Number: <%= count %></td>
-				<td><%= report.name %></td>
+				<td><%= link_to "#{report.name}", user_project_path(current_user.id, report.id) %></td>
 				<td><%= report.description %></td>
 				<td><%= report.created_at %></td>
 			</tr>
@@ -26,4 +26,5 @@ BOTREPORT Prime
 
 </div>
 
+<%#<!-- <td><%= link_to "#{report.name}", user_project_path(report.id) %>
 
