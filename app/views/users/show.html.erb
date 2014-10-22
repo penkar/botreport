@@ -1,7 +1,28 @@
 BOTREPORT Prime
 
-<div>Your Current Reports:
-
+<div class="report">Your Current Reports:
+	<% if @reports.nil? %>
+		<p>You Have no reports at this time.</p>
+	<% else %>
+	<table>
+		<tr>
+			<th>Report Number</th>
+			<th>Fictional Company</th>
+			<th>Description</th>
+			<th>Creation Date</th>
+		</tr>
+		<% count = 1 %>
+			<% @reports.each do |report| %>
+			<tr>
+				<td>Report Number: <%= count %></td>
+				<td><%= report.name %></td>
+				<td><%= report.description %></td>
+				<td><%= report.created_at %></td>
+			</tr>
+			<% count += 1 %>
+			<% end %>
+	</table>
+	<% end %>
 
 </div>
 

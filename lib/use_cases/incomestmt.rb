@@ -1,9 +1,10 @@
 module Bot_Report
 	class Income_stmt
-		attr_accessor :file
+		attr_accessor :file, :statement_id
 
-		def initialize(is_array)
+		def initialize(is_array, statment_id)
 			@file = Hash.new(0)
+			@statement_id = statement_id
 			#converts the passed array into a hash containing the first entry as key, and the following numbers as fixed nums. 
 			is_array.each do 
 				|x,y|; @file[x]=y[0][1..-1].map! do |a| 
@@ -12,7 +13,16 @@ module Bot_Report
 					end
 				end
 			end
-			build_totals
+		end
+
+		def build_revenue_table(file=@file)
+			revenue_object = {:incomestmt_id => @statement_id}
+			file.each do |key,val|    
+				if key[0..14] == "revenue_segment"
+					revenue_object[key.to_sym] = val
+				end
+			end
+			return revenue_object
 		end
 
 		def build_totals
@@ -28,12 +38,14 @@ module Bot_Report
 			ans = arrays.transpose.map!{|x| x.inject(:+)}
 			return ans
 		end
-		
+
 		def build_total_revenue(file=@file)
 			if file["total_revenue"]==0
 				revenue_source = []
 				file.each_pair do |key,val|    
-					revenue_source.push(val) if key[0..14]== "revenue_segment"
+					if key[0..14]== "revenue_segment"
+						revenue_source.push(val) 
+					end
 				end
 				file["total_revenue"] = total(revenue_source)
 			end

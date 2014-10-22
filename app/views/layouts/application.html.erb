@@ -9,16 +9,16 @@
 <body>
 
 <div class="header">
-	<div style="float:left">
-		BotReport - One Step Closer to the Robot Apocalypse
+	<div style="float:left; width:45%">
+		BotReport<br> - One Step Closer to the Robot Apocalypse
 	</div>
 
-	<div style="float:right">
+	<div style="float:right; width:45%">
 		<% if current_user %>
-		  Welcome to my website! You are signed in as <%= current_user.email %>.
+		  Welcome back to the BotReport. You are signed in as <%= current_user.email %>. If this is not you please sign out, or stay signed in and wreak havoc upon another's account. What does it matter? The automatons are coming...
 		  <%= link_to 'sign out', destroy_user_session_path, :method => :delete %>
 		<% else %>
-		  Please <%= link_to 'sign in', new_user_session_path %> first.
+		  Welcome to the BotReport. You currently are not <%= link_to 'signed in', new_user_session_path %>. If you have no account please consider making one so we can track you and sell your meta data. How else will the robots fund their revolution?
 		<% end %>
 	</div>
 <div>

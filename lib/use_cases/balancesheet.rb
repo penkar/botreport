@@ -12,7 +12,6 @@ module Bot_Report
 					end
 				end
 			end
-			build_totals
 		end
 
 		def build_totals
