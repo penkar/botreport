@@ -12,6 +12,7 @@
 	border-radius: 20px;
 }
 
+
 .statement {
 	float:right;
 	margin:20px 0px 0px 0px;
@@ -25,6 +26,9 @@ span {
 		margin: 5px 5px 10px 5px;
 		border-radius:5px;
 		background-color:#84c4fe;
+		&.selected {
+			background-color:#4F7698;
+		}
 	}
 }
 
