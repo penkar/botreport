@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141021202857) do
+ActiveRecord::Schema.define(version: 20141023164949) do
 
   create_table "assumptions", force: true do |t|
     t.text     "company_name"
@@ -142,15 +142,24 @@ ActiveRecord::Schema.define(version: 20141021202857) do
     t.integer  "user_id"
   end
 
+  create_table "ratios", force: true do |t|
+    t.integer "project_id"
+    t.float   "ratio"
+    t.text    "name"
+    t.text    "description"
+  end
+
+  add_index "ratios", ["project_id"], name: "index_ratios_on_project_id"
+
   create_table "revenues", force: true do |t|
     t.string   "name"
-    t.integer  "incomestmt_id"
     t.text     "amount"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "project_id"
   end
 
-  add_index "revenues", ["incomestmt_id"], name: "index_revenues_on_incomestmt_id"
+  add_index "revenues", ["project_id"], name: "index_revenues_on_project_id"
 
   create_table "users", force: true do |t|
     t.string   "name"

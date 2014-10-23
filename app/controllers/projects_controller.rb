@@ -6,6 +6,10 @@ class ProjectsController < ApplicationController
 	end
 
 	def show
+		@revenue = Project.find(params[:id]).revenues
+		@incomestmt = IncomeStmt::ORDER_MAP
+		@balancesheet = BalanceSheet::ORDER_MAP
+		@cashflowstmt = Cashflow::ORDER_MAP
 		@project = User.find(current_user.id).projects.find(params[:id])
 	end
 
@@ -31,6 +35,16 @@ class ProjectsController < ApplicationController
 	def import(file, project_id)
 		a = Bot_Report::Reader.new
 		a.readfile(file, project_id)
+	end
+
+	def destroy
+		@report = Project.find(params[:id])
+		@report.balance_sheets.first.destroy
+		@report.cashflows.first.destroy
+		@report.income_stmts.first.destroy
+		@report.revenues.each{|x| x.destroy}
+		@report.destroy
+		redirect_to :back
 	end
 
 	private

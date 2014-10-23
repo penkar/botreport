@@ -1,4 +1,48 @@
 class BalanceSheet < ActiveRecord::Base
+	ORDER_MAP = [
+		"cash_and_cash_equivalents",
+		"notes_and_accts_receivable_less_doubtful_amounts",
+		"marketable_securities",
+		"accts_receivable",
+		"inventories",
+		"receivable_under_repurchase",
+		"deferred_income",
+		"prepaid_revenue",
+		'total_current_assets',
+		'prepaid_revenue_non_current',
+		'non_marketable_equity_investments',
+		'property_plant_and_equipment',
+		'intangible_assets',
+		'goodwill',
+		'total_noncurrent_assets',
+		'total_assets',
+		'current_liabilities',
+		'accounts_payable',
+		'short_term_debt',
+		'accrued_compensation_and_benefits',
+		'accrued_expenses_and_other_current_liabilities',
+		'accrued_rev_share',
+		'securities_lending_payable',
+		'deferred_revenue',
+		'income_taxes_payable',
+		'total_current_liabilities',
+		'long_term_debt',
+		'deferred_revenue_non_current',
+		'income_taxes_non_current',
+		'deferred_income_taxes_non_current',
+		'other_long_term_liabilities',
+		'long_term_obligations',
+		'non_current_liabilities',
+		'stockholders_equity',
+		'stock_convertible',
+		'stock_common_class_a',
+		'accumulated_other_comprehensive_income',
+		'retained_earnings',
+		'total_cash_cash_equivalents',
+		'total_stockholders_equity',
+		'total_liabilities_and_stockholder_equity'
+	]
+
 	belongs_to :projects
 
 			serialize :cash_and_cash_equivalents

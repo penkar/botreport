@@ -1,4 +1,20 @@
 class IncomeStmt < ActiveRecord::Base
+	ORDER_MAP = [
+    "total_revenue",
+    "cost_and_expenses",
+    "advertising",
+    "depreciation",
+    "research_and_development",
+    "sales_general_and_administrative",
+    "total_costs_and_expenses",
+    "income_from_operations",
+    "interest_and_other_income",
+    "net_income_from_continuing_operations",
+    "interest_expense",
+    "tax_expense",
+    "net_income_from_discontinued_operations",
+    "net_income"
+	]
 	belongs_to :projects
 
 		serialize :cost_and_expenses_segment1

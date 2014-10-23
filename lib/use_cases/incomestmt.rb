@@ -11,18 +11,17 @@ module Bot_Report
 					revenue_segments[x.to_sym] = y[0][1..-1].map! do |a| 
 						if !a.nil?; a.gsub(',','').to_f; end
 					end
-				else
-					@file[x]=y[0][1..-1].map! do |a| 
-						if !a.nil?; a.gsub(',','').to_f; end
-					end
+				end
+				@file[x]=y[0][1..-1].map! do |a| 
+					if !a.nil?; a.gsub(',','').to_f; end
 				end
 			end
 		end
 
 		def build_revenue_table(file=@file)
-			revenue_object = {:incomestmt_id => @statement_id}
+			revenue_object = {:project_id => @statement_id}
 			revenue_segments.each do |key,val|
-				Revenue.create(:incomestmt_id => @statement_id, :name => key, :amount => val)
+				Revenue.create(:project_id => @statement_id, :name => key[16..-1], :amount => val)
 			end
 		end
 
@@ -46,6 +45,7 @@ module Bot_Report
 				file.each_pair do |key,val|    
 					if key[0..14]== "revenue_segment"
 						revenue_source.push(val) 
+						file.delete(key)
 					end
 				end
 				file["total_revenue"] = total(revenue_source)

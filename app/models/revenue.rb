@@ -1,4 +1,4 @@
 class Revenue < ActiveRecord::Base
-  belongs_to :incomestmts
+  belongs_to :projects
   serialize :amount
 end

@@ -1,8 +1,84 @@
-ALL OPEN PROJECTS
+<span class='proj'><%= @project.name %></span>
+<span class='proj'>Common Size</span>
+<span class='proj'>Revenues</span>
+<span class='proj'>Cash Flow</span>
+<span class='proj'>Ratios</span>
 
-<ul>
-	<li><%= @project.name %></li>
-	<% @project.balance_sheets.each do |balance_sheet| %>
-	<li><%= balance_sheet.cash_and_cash_equivalents %></li>
+<br>
+
+<div class="clearfix" id='revenue'>
+<table class="statement">
+	<th><strong>Revenue Sources</strong></th>
+	<% @revenue.each do |income| %>
+		<tr class="<%= income.name %>">
+			<% income.amount.each do |figure| %>
+				<td class="column"><%= figure.round(2) %></td>
+			<% end %>
+			<td class="title"><%= income.name.capitalize %></td>
+		</tr>
 	<% end %>
-</ul>
+</table>
+</div>
+
+<div class="clearfix" id='income'>
+<table class="statement">
+	<th><strong>Income Statement</strong></th>
+	<% @project.income_stmts.each do |income| %>
+		<% @incomestmt.each do |item| %>
+		<tr class="<%= item %>">
+			<% (income.send(item)).each do |figure| %>
+				<td class="column"><%= figure.round(2) %></td>
+			<% end %>
+			<td class="title"><%= item.split('_').map!{|x| x.capitalize}.join(' ') %></td>
+		</tr>
+		<% end %>
+	<% end %>
+</table>
+</div>
+
+<div class="clearfix" id='balance'>
+<table class="statement">
+	<th><strong>Balance Sheet</strong></th>
+	<% @project.balance_sheets.each do |balance_sheet| %>
+		<% @balancesheet.each do |item| %>
+		<tr class="<%= item %>">
+			<% (balance_sheet.send(item)).each do |figure| %>
+				<td class="column"><%= figure.round(2) %></td>
+			<% end %>
+			<td class="title"><%= item.split('_').map!{|x| x.capitalize}.join(' ') %></td>
+		</tr>
+		<% end %>
+	<% end %>
+</table>
+</div>
+
+<div class="clearfix" id='cashflow'>
+<table class="statement">
+<th><strong>Cash Flow Statement</strong></th>
+	<% @project.cashflows.each do |cashflowstmt| %>
+		<% @cashflowstmt.each do |item| %>
+		<tr class="<%= item %>">
+			<% (cashflowstmt.send(item)).each do |figure| %>
+				<td class="column"><%= figure.round(2) %></td>
+			<% end %>
+			<td class="title"><%= item.split('_').map!{|x| x.capitalize}.join(' ') %></td>
+		</tr>
+		<% end %>
+	<% end %>
+</table>
+</div>
+
+<div class="clearfix" id='ratio'>
+<table class="">
+<th><strong>Cash Flow Statement</strong></th>
+	<% @project.ratios.each do |ratio| %>
+		<tr class="">
+			<td><%= ratio.name %></td>
+			<td><%= ratio.ratio %></td>
+			<td><%= ratio.description %></td>
+
+
+		</tr>
+	<% end %>
+</table>
+</div>

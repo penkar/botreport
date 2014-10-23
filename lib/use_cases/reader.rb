@@ -8,10 +8,10 @@ module Bot_Report
 			report_hash = Hash.new([])
 			report_hash = report_line.group_by{|i| i[0]}
 			create_assumption(report_hash['assumptions'])
-			create_income_stmt(report_hash['income_stmt'])
+			create_income_stmt(report_hash['income_stmt'], @project_id)
 			create_balance_sheet(report_hash['bal_sheet'])
 			create_cash_flow_stmt(report_hash['cf_stmt'])
-			# create_ratios
+			create_ratios(project_id)
 		end
 
 		def create_assumption(input_array)
@@ -21,15 +21,15 @@ module Bot_Report
 			assumption = Assumption.create(company_name: a.name, tax_rate: a.tax_rate, interest_rate: a.int_rate, future_growth: a.growth, project_id: project_id)
 		end
 
-		def create_income_stmt(input_array)
+		def create_income_stmt(input_array, project_id)
 			input_array.map!{|array| array[1..-1]}
 			is_array = input_array.group_by{|x| x[0]}
 			statement = IncomeStmt.create
-			a  = Bot_Report::Income_stmt.new(is_array, statement.id)
+			a  = Bot_Report::Income_stmt.new(is_array, project_id)
+			# Bot_Report.record.entities[:income_statement] = a ############
 			a.build_totals
 			hash  = stringrocket(a.file)
 			statement = IncomeStmt.update(statement.id, hash)
-			
 			revenue = a.build_revenue_table
 		end
 
@@ -38,6 +38,7 @@ module Bot_Report
 			bal_sheet = input_array.group_by{|x| x[0]}
 			a  = Bot_Report::Balance_sheet.new(bal_sheet)
 			a.build_totals
+			# Bot_Report.record.entities[:balance_sheet] = a
 			hash  = stringrocket(a.file)
 			sheet = BalanceSheet.create(hash)
 		end
@@ -47,12 +48,18 @@ module Bot_Report
 			cf_stmt = input_array.group_by{|x| x[0]}
 			a  = Bot_Report::Cash_flow.new(cf_stmt)
 			a.build_totals
+			# Bot_Report.record.entities[:cash_flows] = a
 			hash  = stringrocket(a.file)
 			stmt = Cashflow.create(hash)
 		end
 
-		def create_ratios
-			a  = Bot_Report::Ratio_Class::Performance.new
+		def create_ratios(project_id)
+			a  = Bot_Report::Ratio_Class::Performance.new(project_id)
+			a.build_ratios
+			ratios = a.return_ratio
+			ratios.each do |name, hash|
+				Ratio.create(hash)
+			end
 
 			# Bot_Report.record.entities[:ratio_performance] = a
 		end

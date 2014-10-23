@@ -8,12 +8,19 @@
 </head>
 <body>
 
-<div class="header">
-	<div style="float:left; width:45%">
-		BotReport<br> - One Step Closer to the Robot Apocalypse
+<div class="header clearfix">
+	<div class="title">
+		<span class="logo">BotReport</span><br>
+		<span class='tag'>One Step Closer to the Robot Apocalypse</span><br>
+		<h5><% if current_user %>
+		<%= link_to 'Home', root_path %> | 
+		<%= link_to 'Your Page', user_path(current_user.id) %> | 
+		<%= link_to 'New Report', new_user_project_path(current_user.id) %> | 
+		<%= link_to 'News Flash', new_user_project_path(current_user.id) %>
+		<% end %></h5>
 	</div>
 
-	<div style="float:right; width:45%">
+	<div class="login">
 		<% if current_user %>
 		  Welcome back to the BotReport. You are signed in as <%= current_user.email %>. If this is not you please sign out, or stay signed in and wreak havoc upon another's account. What does it matter? The automatons are coming...
 		  <%= link_to 'sign out', destroy_user_session_path, :method => :delete %>
@@ -21,9 +28,12 @@
 		  Welcome to the BotReport. You currently are not <%= link_to 'signed in', new_user_session_path %>. If you have no account please consider making one so we can track you and sell your meta data. How else will the robots fund their revolution?
 		<% end %>
 	</div>
-<div>
+</div>
 
-<div>
+
+
+
+<div class="content">
 	<%= yield %>
 </div>
 

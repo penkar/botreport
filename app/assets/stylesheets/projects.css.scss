@@ -1,3 +1,67 @@
 // Place all the styles related to the Projects controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.statement {
+	float:right;
+	margin:20px 0px 0px 0px;
+	border-spacing: 8px 8px;
+}
+
+span {
+	&.proj{
+		font-size: 1.5em;
+		padding: 3px 10px 3px 10px;
+		margin: 5px 5px 10px 5px;
+		border-radius:5px;
+	}
+}
+
+.total_costs_and_expenses, .income_from_operations, .net_income_from_continuing_operations, .net_income_from_discontinued_operations, .net_income, .net_cash_flow_operations, .net_cash_flow_investing, .net_cash_flow_financing, .net_cash_finance, .equity, .total_current_liabilities, .long_term_obligations, .total_stockholders_equity, .total_current_assets, .total_noncurrent_assets, .total_assets, .current_liabilities, .non_current_liabilities, .equity, .total_liabilities_and_stockholder_equity {
+	font-weight:bold;
+}
+
+td {
+	margin-left:15px;
+	margin-right:15px;
+	text-align:right;
+	border-bottom: solid 1px black;
+	&.title {
+		min-width:350px;	
+	}
+	&.column {
+		min-width:60px;	
+	}
+}
+.title, .column {text-align:right}
+
+#project_description {
+	height:3em;
+	width:50%;
+}
+
+.form{
+	text-align:center;
+}
+
+
+.clearfix:after {
+    content: ".";
+    display: block;
+    clear: both;
+    visibility: hidden;
+    line-height: 0;
+    height: 0;
+}
+ 
+.clearfix {
+    display: inline-block;
+}
+ 
+html[xmlns] .clearfix {
+    display: block;
+}
+ 
+* html .clearfix {
+    height: 1%;
+}

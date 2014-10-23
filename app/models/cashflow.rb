@@ -1,4 +1,40 @@
 class Cashflow < ActiveRecord::Base
+	ORDER_MAP = [
+		'net_income',
+		'cf_adjustments',
+		'depreciation_and_amortization',
+		'stock_based_compensation',
+		'tax_benefits',
+		'deferred_income_taxes',
+		'impairment_of_equity_investments',
+		'gain_on_divestitures',
+		'other',
+		'cf_change_in_assets',
+		'net_cash_flow_operations',
+		'purchase_property_plant_equipment',
+		'purchase_marketable_securities',
+		'maturities_sales_of_marketable_securities',
+		'investments_in_non_marketable_equity_investments',
+		'cash_collateral',
+		'net_cash_flow_investing',
+		'investments_in_reverse_repurchase_agreements',
+		'proceeds_from_divestiture',
+		'acquisitions',
+		'non_cash_investing_and_financing',
+		'net_payments_stock_awards',
+		'excess_tax_benefits',
+		'proceeds_from_debt_issuance',
+		'debt_repayment',
+		'net_cash_flow_financing',
+		'exchange_rate_cash_equivalents',
+		'net_increase_decrease_cash_equivalents',
+		'cash_and_cash_equivalents_beg',
+		'cash_paid_for_taxes',
+		'cash_paid_for_interest',
+		'cash_and_cash_equivalents_end'
+	]
+
+
 	belongs_to :projects
 
 

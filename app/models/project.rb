@@ -4,5 +4,8 @@ class Project < ActiveRecord::Base
 	has_many :income_stmts
 	has_many :balance_sheets
 	has_many :cashflows
+	has_many :revenues
+	has_many :ratios
+
 
 end

@@ -1,21 +1,21 @@
-BOTREPORT Prime
-
 <div class="report">Your Current Reports:
 	<% if @reports.nil? %>
 		<p>You Have no reports at this time.</p>
 	<% else %>
-	<table>
+	<table class="project-list">
 		<tr>
-			<th>Report Number</th>
-			<th>Fictional Company</th>
-			<th>Description</th>
-			<th>Creation Date</th>
+			<th class="number">Report<br> Number</th>
+			<th class="name">Fictional <br>Company</th>
+			<th></th>
+			<th class="description">Description</th>
+			<th class="create">Creation <br>Date</th>
 		</tr>
 		<% count = 1 %>
 			<% @reports.each do |report| %>
 			<tr>
-				<td>Report Number: <%= count %></td>
-				<td><%= link_to "#{report.name}", user_project_path(current_user.id, report.id) %></td>
+				<td><%= count %></td>
+				<td><%= link_to "#{report.name}", user_project_path(current_user.id, report.id) %> </td>
+				<td><%= button_to "Delete", user_project_path(current_user.id, report.id), :method => :delete, :confirm => "Are you sure?" %></td>
 				<td><%= report.description %></td>
 				<td><%= report.created_at %></td>
 			</tr>
