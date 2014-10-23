@@ -1,14 +1,16 @@
 <span class='proj'><%= @project.name %></span>
 <span class='proj'>Common Size</span>
-<span class='proj'>Revenues</span>
-<span class='proj'>Cash Flow</span>
-<span class='proj'>Ratios</span>
+<span class='proj' id='revenuelink'>Revenues</span>
+<span class='proj' id='incomelink'>Income Statement</span>
+<span class='proj' id='balancelink'>Balance Sheet</span>
+<span class='proj' id='cashflowlink'>Cash Flow</span>
+<span class='proj' id='ratiolink'>Ratios</span>
 
-<br>
+<br><br>
 
+<div class='bar'>Revenue Sources</div>
 <div class="clearfix" id='revenue'>
 <table class="statement">
-	<th><strong>Revenue Sources</strong></th>
 	<% @revenue.each do |income| %>
 		<tr class="<%= income.name %>">
 			<% income.amount.each do |figure| %>
@@ -20,9 +22,10 @@
 </table>
 </div>
 
+<br>
+<div class='bar'>Income Statement</div>
 <div class="clearfix" id='income'>
 <table class="statement">
-	<th><strong>Income Statement</strong></th>
 	<% @project.income_stmts.each do |income| %>
 		<% @incomestmt.each do |item| %>
 		<tr class="<%= item %>">
@@ -36,9 +39,10 @@
 </table>
 </div>
 
+<br>
+<div class='bar'>Balance Sheet</div>
 <div class="clearfix" id='balance'>
 <table class="statement">
-	<th><strong>Balance Sheet</strong></th>
 	<% @project.balance_sheets.each do |balance_sheet| %>
 		<% @balancesheet.each do |item| %>
 		<tr class="<%= item %>">
@@ -52,9 +56,10 @@
 </table>
 </div>
 
+<br>
+<div class='bar'>Cash Flow Statement</div>
 <div class="clearfix" id='cashflow'>
 <table class="statement">
-<th><strong>Cash Flow Statement</strong></th>
 	<% @project.cashflows.each do |cashflowstmt| %>
 		<% @cashflowstmt.each do |item| %>
 		<tr class="<%= item %>">
@@ -68,16 +73,15 @@
 </table>
 </div>
 
+<br>
+<div class='bar'>Financial Ratios</div>
 <div class="clearfix" id='ratio'>
 <table class="">
-<th><strong>Cash Flow Statement</strong></th>
 	<% @project.ratios.each do |ratio| %>
 		<tr class="">
 			<td><%= ratio.name %></td>
 			<td><%= ratio.ratio %></td>
 			<td><%= ratio.description %></td>
-
-
 		</tr>
 	<% end %>
 </table>

@@ -1,6 +1,16 @@
 // Place all the styles related to the Projects controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.bar{
+	width:100%;
+	background-color:#233f5e;
+	color:#F0F8FF;
+	font-weight: strong;
+	font-size: 1.5em;
+	padding-left: 10px;
+	margin:5px;
+	border-radius: 20px;
+}
 
 .statement {
 	float:right;
@@ -14,6 +24,7 @@ span {
 		padding: 3px 10px 3px 10px;
 		margin: 5px 5px 10px 5px;
 		border-radius:5px;
+		background-color:#84c4fe;
 	}
 }
 
@@ -33,7 +44,9 @@ td {
 		min-width:60px;	
 	}
 }
-.title, .column {text-align:right}
+.title, .column {
+	text-align:right
+}
 
 #project_description {
 	height:3em;
