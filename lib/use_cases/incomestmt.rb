@@ -40,14 +40,14 @@ module Bot_Report
 		end
 
 		def build_total_revenue(file=@file)
-			if file["total_revenue"]==0
 				revenue_source = []
-				file.each_pair do |key,val|    
+				file.each_pair do |key,val|
 					if key[0..14]== "revenue_segment"
 						revenue_source.push(val) 
 						file.delete(key)
 					end
 				end
+			if file["total_revenue"]==0
 				file["total_revenue"] = total(revenue_source)
 			end
 		end

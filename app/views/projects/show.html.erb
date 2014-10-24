@@ -1,13 +1,28 @@
-<span class='proj'><%= @project.name %></span>
+<span class='proj' id='proforma'><%= @project.name %> <span style="color:#603bfa;">- Create ProForma</span></span><br><br>
+<span class='proj' id='ratiolink'>Ratios</span>
 <span class='proj'>Common Size</span>
 <span class='proj' id='revenuelink'>Revenues</span>
 <span class='proj' id='incomelink'>Income Statement</span>
 <span class='proj' id='balancelink'>Balance Sheet</span>
 <span class='proj' id='cashflowlink'>Cash Flow</span>
-<span class='proj' id='ratiolink'>Ratios</span>
 
-<br><br>
 
+<br>
+<br>
+<div class='bar'>Financial Ratios</div>
+<div class="clearfix" id='ratio'>
+<table class="ratios">
+	<% @project.ratios.each do |ratio| %>
+		<tr class="">
+			<td><%= ratio.name %></td>
+			<td><%= ratio.ratio %></td>
+			<td><%= ratio.description %></td>
+		</tr>
+	<% end %>
+</table>
+</div>
+
+<br>
 <div class='bar'>Revenue Sources</div>
 <div class="clearfix" id='revenue'>
 <table class="statement">
@@ -69,20 +84,6 @@
 			<td class="title"><%= item.split('_').map!{|x| x.capitalize}.join(' ') %></td>
 		</tr>
 		<% end %>
-	<% end %>
-</table>
-</div>
-
-<br>
-<div class='bar'>Financial Ratios</div>
-<div class="clearfix" id='ratio'>
-<table class="">
-	<% @project.ratios.each do |ratio| %>
-		<tr class="">
-			<td><%= ratio.name %></td>
-			<td><%= ratio.ratio %></td>
-			<td><%= ratio.description %></td>
-		</tr>
 	<% end %>
 </table>
 </div>

@@ -12,7 +12,12 @@
 	border-radius: 20px;
 }
 
-
+.ratios{
+	border-spacing: 8px 8px;
+	td {
+		text-align:left;
+	}
+}
 .statement {
 	float:right;
 	margin:20px 0px 0px 0px;
@@ -22,12 +27,13 @@
 span {
 	&.proj{
 		font-size: 1.5em;
-		padding: 3px 10px 3px 10px;
-		margin: 5px 5px 10px 5px;
+		padding: 5px 10px 5px 10px;
+		margin: 15px 10px 5px 5px;
 		border-radius:5px;
 		background-color:#84c4fe;
 		&.selected {
 			background-color:#4F7698;
+			border: 1px solid black;
 		}
 	}
 }
@@ -52,13 +58,16 @@ td {
 	text-align:right
 }
 
-#project_description {
-	height:3em;
-	width:50%;
-}
+
 
 .form{
-	text-align:center;
+	#project_name {
+		width:400px;
+	}
+	#project_description {
+		height:3em;
+		width:800px;
+	}
 }
 
 

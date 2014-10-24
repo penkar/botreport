@@ -1,8 +1,9 @@
-assumptions,company_name,ABC CO.
-assumptions,tax_rate,0.3
+assumptions,company_name,ABC CO.,
+assumptions,tax_rate,0.3,,
 assumptions,interest_rate,0.07
-assumptions,shareholders,1000000
-assumptions,future_growth,0.05
+assumptions,shareholders,1000000,
+assumptions,future_growth,0.05,
+assumptions,stock_price,0.05,
 bal_sheet,cash_and_cash_equivalents,14778
 bal_sheet,notes_and_accts_receivable_less_doubtful_amounts,5
 bal_sheet,marketable_securities,33310
@@ -90,4 +91,4 @@ cf_stmt,cash_and_cash_equivalents_beg,13630
 cf_stmt,cash_and_cash_equivalents_end,9983
 cf_stmt,cash_paid_for_taxes,1471
 cf_stmt,cash_paid_for_interest,40
-cf_stmt,non_cash_investing_and_financing,
+cf_stmt,non_cash_investing_and_financing,0

@@ -18,7 +18,7 @@ module Bot_Report
 			input_array.map!{|array| array[1..-1]}
 			assumption_array = input_array.group_by{|x| x[0]}
 			a  = Bot_Report::Assumptions.new(assumption_array)
-			assumption = Assumption.create(company_name: a.name, tax_rate: a.tax_rate, interest_rate: a.int_rate, future_growth: a.growth, project_id: project_id)
+			assumption = Assumption.create(company_name: a.name, tax_rate: a.tax_rate, interest_rate: a.int_rate, future_growth: a.growth, project_id: project_id, shareholders: a.shareholders, price: a.price)
 		end
 
 		def create_income_stmt(input_array, project_id)
