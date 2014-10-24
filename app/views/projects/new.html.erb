@@ -1,5 +1,4 @@
 Create a new Report:
-
 <div class='form'>
 	<%= form_for @project, url: {action: 'create'} do |f| %>
 	<br>Report Name: 
@@ -9,3 +8,17 @@ Create a new Report:
 			<%= f.file_field :file %><%= submit_tag "Create New Report" %>
 	<% end %>	
 </div>
+<br><br>
+
+<%= link_to "Form Template Download", "/template.csv" %>
+<p>How to user the template:</p>
+<ol>
+<li>Follow the Link to the <a href="http://www.sec.gov/edgar.shtml">SEC Edgar Website</a>.</li>
+<li>From here you can search for the company you are trying to analyze.</li>
+<ul><li>The easiest way is to use the stock indicator for the company.</li></ul>
+<li>Once you have found hte company in question you will look for thei 10K filing for the most recent year.</li>
+<li>Use the information in the filing to fill out the template to the best of your ability.</li>
+<ul><li>NO! THERE IS NO EASY WAY TO ACCESS THIS INFORMATION!</li><li>Some companies may have an automated feed, but the SEC with whom all forms are filed does not offer any massive distribution that can be used.</li></ul>
+<li>Once you have filled out the template, save the form taking care to leave it in CSV format and upload the file to the website.</li>
+<li>Being descriptive with your report name will assist the News Flash!</li>
+</ol> 

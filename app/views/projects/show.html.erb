@@ -13,7 +13,7 @@
 <div class="clearfix" id='ratio'>
 <table class="ratios">
 	<% @project.ratios.each do |ratio| %>
-		<tr class="">
+		<tr class="<%= ratio.name.gsub(' ','_') %>">
 			<td><%= ratio.name %></td>
 			<td><%= ratio.ratio %></td>
 			<td><%= ratio.description %></td>
@@ -29,7 +29,7 @@
 	<% @revenue.each do |income| %>
 		<tr class="<%= income.name %>">
 			<% income.amount.each do |figure| %>
-				<td class="column"><%= figure.round(2) %></td>
+				<td class="column"><%= number_to_currency(figure) %></td>
 			<% end %>
 			<td class="title"><%= income.name.capitalize %></td>
 		</tr>
@@ -45,7 +45,7 @@
 		<% @incomestmt.each do |item| %>
 		<tr class="<%= item %>">
 			<% (income.send(item)).each do |figure| %>
-				<td class="column"><%= figure.round(2) %></td>
+				<td class="column"><%= number_to_currency(figure) %></td>
 			<% end %>
 			<td class="title"><%= item.split('_').map!{|x| x.capitalize}.join(' ') %></td>
 		</tr>
@@ -62,7 +62,7 @@
 		<% @balancesheet.each do |item| %>
 		<tr class="<%= item %>">
 			<% (balance_sheet.send(item)).each do |figure| %>
-				<td class="column"><%= figure.round(2) %></td>
+				<td class="column"><%= number_to_currency(figure) %></td>
 			<% end %>
 			<td class="title"><%= item.split('_').map!{|x| x.capitalize}.join(' ') %></td>
 		</tr>
@@ -79,11 +79,31 @@
 		<% @cashflowstmt.each do |item| %>
 		<tr class="<%= item %>">
 			<% (cashflowstmt.send(item)).each do |figure| %>
-				<td class="column"><%= figure.round(2) %></td>
+				<td class="column"><%= number_to_currency(figure) %></td>
 			<% end %>
 			<td class="title"><%= item.split('_').map!{|x| x.capitalize}.join(' ') %></td>
 		</tr>
 		<% end %>
 	<% end %>
+</table>
+</div>
+
+<div class='bar'>Company Assumptions</div>
+<div class="clearfix" id='assumption'>
+<table class="statement">
+	<tr class="company_name">
+		<td><%= @assumption.company_name %></td><td>Company Name</td>
+	</tr><tr class="tax_rate">
+		<td><%= @assumption.tax_rate %></td><td>Tax Rate</td>
+	</tr><tr class="interest_rate">
+		<td><%= @assumption.interest_rate %></td><td>Interest Rate</td>
+	</tr><tr class="tax_rate">
+		<td><%= @assumption.tax_rate %></td><td>Tax Rate</td>
+	</tr><tr class="shareholders">
+		<td><%= @assumption.shareholders %></td><td>Share Holders</td>
+	</tr><tr class="price">
+		<td><%= @assumption.price %></td><td>Price</td>
+	</tr>
+
 </table>
 </div>

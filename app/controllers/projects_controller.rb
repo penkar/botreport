@@ -6,6 +6,7 @@ class ProjectsController < ApplicationController
 	end
 
 	def show
+		@assumption = Project.find(params[:id]).assumptions.first
 		@revenue = Project.find(params[:id]).revenues
 		@incomestmt = IncomeStmt::ORDER_MAP
 		@balancesheet = BalanceSheet::ORDER_MAP

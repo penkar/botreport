@@ -18,10 +18,9 @@
 
 	<div class="login">
 		<% if current_user %>
-		  Welcome back to the BotReport. You are signed in as <%= current_user.email %>. If this is not you please
-		  <%= link_to 'sign out.', destroy_user_session_path, :method => :delete %>
+		  Welcome back to the BotReport. You are signed in as <%= current_user.email %>. If this is not you please <span style="color:red"><%= link_to 'sign out.', destroy_user_session_path, :method => :delete %></span>
 		<% else %>
-		  Welcome to the BotReport. You currently are not <%= link_to 'signed in', new_user_session_path %>. 
+		  Welcome to the BotReport. You currently are not  <span style="color:red"><%= link_to 'signed in', new_user_session_path %></span>. 
 		<% end %>
 	</div>
 </div>
