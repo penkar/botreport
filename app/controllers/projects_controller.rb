@@ -28,8 +28,7 @@ class ProjectsController < ApplicationController
 	end
 
 	def index
-		@projects = User.find(current_user.id).projects
-
+		@projectlist = User.find(current_user.id).projects.map{|obj| obj.name}
 	end
 
 

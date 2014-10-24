@@ -1,8 +1,24 @@
 NEWS FLASH!
 
-<ul>List of current reports:
-	<% @projects.each do |proj| %>
-		<li><%= proj.name %></li>
-	<% end %>
-</ul>
+List of current reports:<br>
+<% @projectlist.each do |proj| %>
+	<article>| <%= proj %> | </article>
+	<div class="news" id="<%= proj %>">
+	</div>
+<% end %>
 
+
+<script type="text/javascript">
+  var projectlist = "<%= @projectlist %>".replace(/&quot;|\[|\]/g,'').split(',')
+  console.log(projectlist)
+	$(document).on('ready', function(){
+		for(var i = 0; i < projectlist.length ; i++){
+			var subject = projectlist[i]
+			var article = ''
+			$.getJSON('http://api.nytimes.com/svc/search/v2/articlesearch.json?q=' + subject + '+business&api-key=c0daf1e9c1c0f60021fda75b32898e6b:4:70052310', function(data) {
+				article = data;
+			})
+			html 
+		}
+	})
+</script>
