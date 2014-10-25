@@ -7,6 +7,10 @@ $(document).ready(function(){
 		$(this).toggleClass('selected')
 		$('#revenue').toggle()
 	})
+	$('#commonsize').on('click', function(){
+		$(this).toggleClass('selected')
+		$('.column').toggle()
+	})
 	$('#incomelink').on('click', function(){
 		$(this).toggleClass('selected')
 		$('#income').toggle()
@@ -38,7 +42,7 @@ var proforma = function(){
 //Remove $ and commas, then parse to Int.
 /////////////////////////////////////////
 var setToNum = function(number){
-	number = parseInt(number.replace('$','').replace(',',''));
+	number = parseFloat(number.replace('$','').replace(',',''));
 	return number;
 }
 
@@ -61,34 +65,34 @@ var getRatio = function(classType){
 
 var proFormaRevenueCost = function(){
 	var source = [], rev = [];
-	var newCostAndExp = 0;
+	var newTotalCostandExp = 0;
 	var priorTotalRevenue = firstChildGet('.total_revenue');
 	$('#revenue tr').each(function(){source.push($(this).attr('class'))});
 	$('#revenue tr').each(function(){rev.push($(this).children().first().html())});
 	for(var i = 0; i < source.length ; i ++){
 		var spot = i;
-		ans = prompt("What are your growth expectations for next year's " + source[i] + "segment?");
+		ans = prompt("What are your growth expectations for next year's " + source[i] + " segment?");
 		var newRevenue = setToNum(rev[i]) * setToNum(ans);
 		totalRevenue += newRevenue;
 		$('#revenue tbody').children(":nth-child(" + (spot + 1) + ")").prepend('<td>' + newRevenue + '</td>');
 	}
 	$('.total_revenue').prepend('<td>' + totalRevenue + '</td>');
-	var newCost = firstChildGet('.cost_and_expenses') / totalRevenue;
-	var nextCostAndExpense = (newCost * priorTotalRevenue);
-	$('.cost_and_expenses').prepend('<td>' + nextCostAndExpense + '</td>');	
+	var priorCost = firstChildGet('.cost_and_expenses');
+	var newCostandExp = (priorCost / priorTotalRevenue * totalRevenue);
+	$('.cost_and_expenses').prepend('<td>' + newCostandExp.toFixed(2) + '</td>');	
 	alert('Depreciation is assumed to remain constant.');
 	var costGrow = setToNum(prompt('Enter R&D, SG&A and Advertising expense expectations compared to most recent year.'));
 	$('.depreciation').prepend('<td>' + firstChildGet('.depreciation') + '</td>');
 	$('.advertising').prepend('<td>' + costGrow * firstChildGet('.advertising') + '</td>');
 	$('.research_and_development').prepend('<td>' + costGrow * firstChildGet('.research_and_development') + '</td>');
 	$('.sales_general_and_administrative').prepend('<td>' + costGrow * firstChildGet('.sales_general_and_administrative') + '</td>');
-	newCostAndExp += firstChildGet('.depreciation');
-	newCostAndExp += firstChildGet('.advertising');
-	newCostAndExp += firstChildGet('.research_and_development');
-	newCostAndExp += firstChildGet('.sales_general_and_administrative');
-	newCostAndExp += nextCostAndExpense;
-	$('.total_costs_and_expenses').prepend('<td>' + newCostAndExp + '</td>');
-	$('.income_from_operations').prepend('<td>' + (totalRevenue - newCostAndExp) + '</td>');
+	newTotalCostandExp += firstChildGet('.depreciation');
+	newTotalCostandExp += firstChildGet('.advertising');
+	newTotalCostandExp += firstChildGet('.research_and_development');
+	newTotalCostandExp += firstChildGet('.sales_general_and_administrative');
+	newTotalCostandExp += newCostandExp;
+	$('.total_costs_and_expenses').prepend('<td>' + newTotalCostandExp + '</td>');
+	$('.income_from_operations').prepend('<td>' + (totalRevenue - newTotalCostandExp) + '</td>');
 }
 
 ///////////////////////////////////

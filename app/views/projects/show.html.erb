@@ -1,6 +1,6 @@
 <span class='proj' id='proforma'><%= @project.name %> <span style="color:#603bfa;">- Create ProForma</span></span><br><br>
 <span class='proj' id='ratiolink'>Ratios</span>
-<span class='proj'>Common Size</span>
+<span class='proj' id='commonsize'>Common Size</span>
 <span class='proj' id='revenuelink'>Revenues</span>
 <span class='proj' id='incomelink'>Income Statement</span>
 <span class='proj' id='balancelink'>Balance Sheet</span>
@@ -28,8 +28,9 @@
 <table class="statement">
 	<% @revenue.each do |income| %>
 		<tr class="<%= income.name %>">
-			<% income.amount.each do |figure| %>
-				<td class="column"><%= number_to_currency(figure) %></td>
+			<% income.amount.each_index do |figure| %>
+			<% csdata = ((income.amount[figure]/@project.income_stmts.first.total_revenue[figure].to_f).round(4)*100).to_s + '%' %>
+				<td class="column" data-original="<%= number_to_currency(income.amount[figure]) %>" data-cs="<%= csdata %>"><%= number_to_currency(income.amount[figure]) %></td>
 			<% end %>
 			<td class="title"><%= income.name.capitalize %></td>
 		</tr>
@@ -43,9 +44,12 @@
 <table class="statement">
 	<% @project.income_stmts.each do |income| %>
 		<% @incomestmt.each do |item| %>
+		<% counter = 0 %>
 		<tr class="<%= item %>">
 			<% (income.send(item)).each do |figure| %>
-				<td class="column"><%= number_to_currency(figure) %></td>
+				<% csdata = ((figure / income.send('total_revenue')[counter].to_f).round(4)*100).to_s + '%' %>
+				<td class="column" data-original="<%= number_to_currency(figure) %>" data-cs="<%= csdata %>"><%= number_to_currency(figure) %></td>
+					<% counter += 1 %>
 			<% end %>
 			<td class="title"><%= item.split('_').map!{|x| x.capitalize}.join(' ') %></td>
 		</tr>

@@ -40,7 +40,7 @@ bal_sheet,retained_earnings,48342,45924.9
 bal_sheet,total_stockholders_equity,71715,68129.25
 bal_sheet,total_liabilities_and_stockholder_equity,93798,89108.1
 income_stmt,revenue_segment_sales,37905,36009.75
-income_stmt,revenue_segment_other_income,0,0
+income_stmt,revenue_segment_other_income,10000,10000
 income_stmt,cost_and_expenses_segment1,0,0
 income_stmt,cost_and_expenses_segment2,500,475
 income_stmt,advertising,13188,12528.6
