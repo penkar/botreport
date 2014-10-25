@@ -1,24 +1,29 @@
 NEWS FLASH!
 
-List of current reports:<br>
+List of current reports: Powered by The New York Times<br>
+<main>| 
 <% @projectlist.each do |proj| %>
-	<article>| <%= proj %> | </article>
-	<div class="news" id="<%= proj %>">
-	</div>
+	<%= proj %> | 
 <% end %>
-
+</main>
+<div id='c'></div>
 
 <script type="text/javascript">
   var projectlist = "<%= @projectlist %>".replace(/&quot;|\[|\]/g,'').split(',')
-  console.log(projectlist)
 	$(document).on('ready', function(){
 		for(var i = 0; i < projectlist.length ; i++){
-			var subject = projectlist[i]
-			var article = ''
+			var subject = projectlist[i];
+			var article = '';
 			$.getJSON('http://api.nytimes.com/svc/search/v2/articlesearch.json?q=' + subject + '+business&api-key=c0daf1e9c1c0f60021fda75b32898e6b:4:70052310', function(data) {
-				article = data;
+				for(var j = 0; j < 5; j ++){
+					var header = data['response']['docs'][j]['headline']['print_headline'] || 'Undefined Title';
+					var snippet = data['response']['docs'][j]['snippet'];
+					var link = data['response']['docs'][j]['web_url'];
+					html = "<span class='header' style='color:red;'>"+ header +"</span><article>" + snippet + "</article><span class='link'><a href='" + link + "'>" + link + "</a></span><br>";
+					$('#c').append(html);
+					console.log(data);
+				}
 			})
-			html 
 		}
 	})
 </script>
