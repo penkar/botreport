@@ -85,8 +85,11 @@
 	<% @project.cashflows.each do |cashflowstmt| %>
 		<% @cashflowstmt.each do |item| %>
 		<tr class="<%= item %>">
+		<% counter = 0 %>
 			<% (cashflowstmt.send(item)).each do |figure| %>
-				<td class="column"><%= number_to_currency(figure) %></td>
+				<% csdata = ((10000*figure / cashflowstmt.send('cash_and_cash_equivalents_end')[counter]).to_i.to_f/100).to_s+ '%' %>
+				<td class="column" data-original="<%= number_to_currency(figure) %>" data-cs="<%= csdata %>"><%= number_to_currency(figure) %></td>
+				<% counter += 1 %>
 			<% end %>
 			<td class="title"><%= item.split('_').map!{|x| x.capitalize}.join(' ') %></td>
 		</tr>
