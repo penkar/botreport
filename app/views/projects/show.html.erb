@@ -29,7 +29,7 @@
 	<% @revenue.each do |income| %>
 		<tr class="<%= income.name %>">
 			<% income.amount.each_index do |figure| %>
-			<% csdata = ((income.amount[figure]/@project.income_stmts.first.total_revenue[figure].to_f).round(4)*100).to_s + '%' %>
+			<% csdata = ((income.amount[figure]/@project.income_stmts.first.total_revenue[figure]*10000).to_i.to_f/100).to_s + '%' %>
 				<td class="column" data-original="<%= number_to_currency(income.amount[figure]) %>" data-cs="<%= csdata %>"><%= number_to_currency(income.amount[figure]) %></td>
 			<% end %>
 			<td class="title"><%= income.name.capitalize %></td>
@@ -47,7 +47,7 @@
 		<% counter = 0 %>
 		<tr class="<%= item %>">
 			<% (income.send(item)).each do |figure| %>
-				<% csdata = ((figure / income.send('total_revenue')[counter].to_f).round(4)*100).to_s + '%' %>
+				<% csdata = ((figure / income.send('total_revenue')[counter]*10000).to_i.to_f/100).to_s + '%' %>
 				<td class="column" data-original="<%= number_to_currency(figure) %>" data-cs="<%= csdata %>"><%= number_to_currency(figure) %></td>
 					<% counter += 1 %>
 			<% end %>
@@ -64,9 +64,12 @@
 <table class="statement">
 	<% @project.balance_sheets.each do |balance_sheet| %>
 		<% @balancesheet.each do |item| %>
+		<% counter = 0 %>
 		<tr class="<%= item %>">
 			<% (balance_sheet.send(item)).each do |figure| %>
-				<td class="column"><%= number_to_currency(figure) %></td>
+				<% csdata = ((10000*figure / (balance_sheet.send('total_assets')[counter])).to_i.to_f/100).to_s + '%' %>
+				<td class="column" data-cs="<%= csdata %>" data-original="<%= number_to_currency(figure) %>"><%= number_to_currency(figure) %></td>
+				<% counter += 1 %>
 			<% end %>
 			<td class="title"><%= item.split('_').map!{|x| x.capitalize}.join(' ') %></td>
 		</tr>

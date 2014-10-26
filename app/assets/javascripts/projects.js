@@ -7,10 +7,12 @@ $(document).ready(function(){
 		$(this).toggleClass('selected')
 		$('#revenue').toggle()
 	})
-	$('#commonsize').on('click', function(){
+	$("#commonsize").on("click", function () {
 		$(this).toggleClass('selected')
-		$('.column').toggle()
-	})
+	  _.each($('.column'), function(td){
+	  	$(td).text($(td).text() == $(td).data("original") ? $(td).data("cs") : $(td).data("original"));
+	  })
+	});
 	$('#incomelink').on('click', function(){
 		$(this).toggleClass('selected')
 		$('#income').toggle()
