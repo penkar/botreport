@@ -1,34 +1,18 @@
 $(document).ready(function(){
 	$('#proforma').on('click', function(){
-		$(this).toggleClass('selected')
 		proforma()
 	})
-	$('#revenuelink').on('click', function(){
-		$(this).toggleClass('selected')
-		$('#revenue').toggle()
-	})
 	$("#commonsize").on("click", function () {
+		////////////////////ADDD FUNCTIONALITY TO CLOSE RATIOS AND HIGHLIGHT RATIOS BUTTON WHEN COMMONSIZE IS HIT. POSSIBLLY ADD ID TO RATIO LINK?
 		$(this).toggleClass('selected')
 	  _.each($('.column'), function(td){
 	  	$(td).text($(td).text() == $(td).data("original") ? $(td).data("cs") : $(td).data("original"));
 	  	$(td).toggle('slow').toggle('slow')
 	  })
 	});
-	$('#incomelink').on('click', function(){
+	$('.proj').on('click', function(){
 		$(this).toggleClass('selected')
-		$('#income').toggle()
-	})
-	$('#balancelink').on('click', function(){
-		$(this).toggleClass('selected')
-		$('#balance').toggle()
-	})
-	$('#cashflowlink').on('click', function(){
-		$(this).toggleClass('selected')
-		$('#cashflow').toggle()
-	})
-	$('#ratiolink').on('click', function(){
-		$(this).toggleClass('selected')
-		$('#ratio').toggle()
+		$('#'+$(this).data('link')).toggle()
 	})
 })
 
