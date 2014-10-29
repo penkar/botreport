@@ -11,6 +11,7 @@ $(document).ready(function(){
 		$(this).toggleClass('selected')
 	  _.each($('.column'), function(td){
 	  	$(td).text($(td).text() == $(td).data("original") ? $(td).data("cs") : $(td).data("original"));
+	  	$(td).toggle('slow').toggle('slow')
 	  })
 	});
 	$('#incomelink').on('click', function(){
