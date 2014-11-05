@@ -1,8 +1,20 @@
+<script>
+	var revObj = {};
+	for(var i = 0; i < <%= @revenue.to_json.html_safe %>.length; i++){
+	revObj[<%= @revenue.to_json.html_safe %>[i].name] = [<%= @revenue.to_json.html_safe %>[i].amount[0]]
+	}
+
+	var incomeObj = <%= @project.income_stmts.to_json.html_safe %>[0];
+	var balObj = <%= @project.balance_sheets.to_json.html_safe %>[0];
+	var cashObj = <%= @project.cashflows.to_json.html_safe %>[0];
+	var assumption = <%= @assumption.to_json.html_safe %>;
+</script>
+
 <span style="font-weight:strong;font-size:1.5em;"><%= @project.name %></span> 
 <a class='proj' id='proforma'>Create ProForma</a>
 <a class='proj' id='commonsize' >Common Size</a>
 <br><br>
-<a class='proj' href="#" data-link="ratio">Ratios</a>
+<a class='proj' href="#" data-link="ratio" id='ratiolink'>Ratios</a>
 <a class='proj' href="#" data-link="revenue">Revenues</a>
 <a class='proj' href="#" data-link="income">Income Statement</a>
 <a class='proj' href="#" data-link="balance">Balance Sheet</a>
@@ -100,9 +112,9 @@
 </table>
 </div>
 
-<div class='bar'>Company Assumptions</div>
-<div class="clearfix" id='assumption'>
-<table class="statement">
+<div class='bar' style="display:none;">Company Assumptions</div>
+<div class="clearfix" id='assumption' style="display:none;">
+<table class="statement" style="display:none;">
 	<tr class="company_name">
 		<td><%= @assumption.company_name %></td><td>Company Name</td>
 	</tr><tr class="tax_rate">
