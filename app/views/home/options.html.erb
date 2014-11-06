@@ -1,36 +1,37 @@
 Option Pricing Tool:
-<form>
+<%= form_for :users do |f| %>
 	<table>
 		<tbody>
 			<tr>
-				<td>Stock Price</td>
-				<td><input></td>
+				<td>Stock Price<br>(ex. 30)</td>
+				<td><%= f.text_field :price %></td>
 				<td>The stock price is the current trading price for a single unit of stock. A stock represents partial ownership of a company.</td>
 			</tr>
 			
 			<tr>
-				<td>Strike Price</td>
-				<td><input></td>
+				<td>Strike Price<br>(ex. 25)</td>
+				<td><%= f.text_field :strike %></td>
 				<td>The strke price is the exercise price of the financial option. This is the effective price the option will be traded at when exercised. For example, if you exercise a call option with a strike price of $14.00, and the price is currently $16.00, you will be buying a stock for a reduced price, which presumably you would be able to sell at immediately for a $2.00 profit.</td>
 			</tr>
 			
 			<tr>
-				<td>Time to Matrurity<br>(Years)</td>
-				<td><input></td>
+				<td>Time to Matrurity<br>(ex. 1.25)</td>
+				<td><%= f.text_field :time %></td>
 				<td>Time to maturity is the effective time from the purchase of an option to the time an option will expire. In this calculator, this time is measured in whole years.</td>
 			</tr>
 			
 			<tr>
-				<td>Risk Free Rate<br>(0.05%)</td>
-				<td><input></td>
+				<td>Risk Free Rate<br>(ex. 0.05)</td>
+				<td><%= f.text_field :rf %></td>
 				<td>The risk free rate is the rate of return an investor can expect at near zero risk. The US Treasury bills are most often used as a model as US Treasuries are considered the least risky form of debt in the market. </td>
 			</tr>
 			
 			<tr>
 				<td>Volatility <br>(ex. 0.2)</td>
-				<td><input></td>
-				<td>Volatility in this sense is a measurement of a stock's movement around a central mean over time. The greater the movement around the mean, the greater the volatility. </td>
-			</tr>								
+				<td><%= f.text_field :vol %></td>
+				<td>Volatility in this sense is a measurement of a stock's movement around a central mean over time. The greater the movement around the mean, the greater the volatility. A greater volatility will result in more dynamic prices. A put and call options are hedges around movement of a stock. The greater the chance of movement into an 'in the money' price level, the more certain the option will be exercised. To compensate for this, higher volatilities result in greater prices.</td>
+			</tr>
 		</tbody>
 	</table>
-</form>
+<%= f.submit "Create" %>
+<% end %>
