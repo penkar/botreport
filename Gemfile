@@ -2,6 +2,8 @@ source 'https://rubygems.org'
 gem 'hirb'
 gem 'pry-debugger'
 gem 'devise'
+gem 'distribution'
+
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.6'

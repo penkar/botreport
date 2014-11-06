@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   get 'home/login'
 
   get '/home', to: 'home#login' 
+  get '/home/options' => 'home#options', :as => 'options'
+  get '/home/options/:price/:strike/:vol/:time/:rf' => 'home#options_price', :as => 'options_price'
 
   devise_for :users
   root :to => 'home#login'
