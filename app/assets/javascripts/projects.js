@@ -41,9 +41,9 @@ var setToNum = function(number){
 	return number;
 }
 
-///////////
-// PROFORMA
-///////////
+////////////////////
+// PROFORMA KICKOFF
+////////////////////
 
 var proforma = function(){
 	newRevenueYear();
@@ -71,13 +71,13 @@ var appendToForm = function(array, object, total){
 }
 
 //////////////////////////////////
-// Begin Proforma Revenue & Cost
+// Begin Proforma Revenue & Costs
 //////////////////////////////////
 
 var newRevenueYear = function(){
 	var newTotalRevenue = 0;
 	_.each(_.keys(revObj),function(x){
-		var grow = parseFloat(prompt('How much do you think ' + x))
+		var grow = parseFloat(prompt('By what percentage do you think ' + x + ' will increase or decrease?'))
 		newSegmentRevenue = grow* (revObj[x][revObj[x].length-1] || revObj[x])
 		revObj[x] = (newSegmentRevenue)
 		newTotalRevenue += newSegmentRevenue
@@ -92,7 +92,7 @@ var costAndExpense = function(){
 	_.each(_.keys(incomeObj) , function(x){
 		if(x.substr(0,25)==='cost_and_expenses_segment'){
 			costAndExpenseArray.push(x);
-			var growth = parseFloat(prompt('What are the future costs expectations for ' + x + '?'));
+			var growth = parseFloat(prompt('By what percentage do you think ' + x + ' will increase or decrease?'));
 			var newCost = growth * (incomeObj[x][0] || incomeObj[x]);
 			incomeObj[x] = newCost;
 			newTotalCost += newCost;
@@ -106,7 +106,7 @@ var costAndExpense = function(){
 //////////////////////////////////
 
 var newExpenseCost = function(){
-	var growth = parseFloat(prompt('What are the future costs expectations for Depreciation, advertising, R&D, and SG&A?'));
+	var growth = parseFloat(prompt('By what percentage do you think future costs expectations for Depreciation, Advertising, R&D, and SG&A will increase or decrease?'));
 	var newTotalCost = 0;
 	_.each(['depreciation','advertising','research_and_development','sales_general_and_administrative'], function(x){
 			var newCost = growth * parseFloat(incomeObj[x][0] || incomeObj[x]);
@@ -119,9 +119,9 @@ var newExpenseCost = function(){
 }
 
 
-//////////////////////////////////
-// Income From Operations & Other
-//////////////////////////////////
+/////////////////////////////////////////
+// Income From Operations, Net & Other
+/////////////////////////////////////////
 
 var newIncomeFromOperations = function(){
 	incomeObj['income_from_operations'] = incomeObj['total_revenue'] - incomeObj['total_costs_and_expenses']
@@ -129,7 +129,7 @@ var newIncomeFromOperations = function(){
 
 var newIntandOtherIncome = function(){
 	console.log('hi')
-	var growth = parseFloat(prompt('What are your future expectations for Interest and other Income?'));
+	var growth = parseFloat(prompt('By what percentage do you think future expectations for Interest and other Income will increase or decrease?'));
 	var newIncome = growth * parseFloat(incomeObj['interest_and_other_income'][0] || incomeObj['interest_and_other_income']);
 	incomeObj['interest_and_other_income'] = newIncome;
 }
@@ -148,6 +148,6 @@ var newInterestExpense = function(){
 }
 
 var newNetIncome = function(){
-	incomeObj['net_income_from_discontinued_operations'] = parseFloat(prompt('Any assumptions concerning future discontinued operations? (Dollar figure)')).toFixed(2);
-	incomeObj['net_income'] = parseFloat(incomeObj['net_income_from_discontinued_operations']+incomeObj['net_income_from_continuing_operations']-incomeObj['tax_expense']);
+	incomeObj['net_income_from_discontinued_operations'] = parseFloat(prompt('Any assumptions concerning future discontinued operations? (Dollar figure)'));
+	incomeObj['net_income'] = parseFloat(incomeObj['net_income_from_discontinued_operations']+parseFloat(incomeObj['net_income_from_continuing_operations'])-incomeObj['tax_expense']);
 }
