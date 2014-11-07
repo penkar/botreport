@@ -11,7 +11,7 @@ $(document).ready(function(){
 	var addOption = function(optionData){
 		var htmlcalldescr = '<br><hr><strong>What is a Call option?</strong><p>A call option represents the ability to purchase a stock at a given (strike) price. It is a hedge against upwards movement. So if you buy a call option with a strike of $20 that will expire in one year, and the price a year from now is $50, you can then buy for $20, sell for $50 and essentially receive a $30 profit.</p>';
 		var htmlputdescr = '<br><hr><strong>What is a Put option?</strong><p>A put option represent the ability to sell a stock at a given (strike) price. It is a hedge against downward movement. So if you sell a put option with a strike of $20 that will expire in one year, and the price a year from now is $10, you can buy for $10, then sell for $20 and essentally receive a $10 profit.</p>';
-		var htmld1descr = '<br><hr><strong>What exactly is D1?</strong><p>D1 is the z-value present value of the stock finishing in a position where it is in the money. Normal distance converts the D1 z-figure into a success percentage. Essentially N(D1) is the present value of an in the money call option.</p>';
+		var htmld1descr = '<br><hr><strong>What exactly is D1?</strong><p>D1 is the z-value present value of the stock finishing in a profitable position. Normal distance converts the D1 z-figure into a success percentage. Essentially N(D1) is the present value of an in the money call option.</p>';
 		var htmld2descr = '<br><hr><strong>What exactly is D2?</strong><p>D2 represents the present value of money spent to exercise the option given its probability of being in the money.</p>';
 
 		var callHTML = $('#callTemplate').html(); 

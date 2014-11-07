@@ -66,7 +66,7 @@
       <td> = </td>
       <td></td>
       <td></td>
-      <td> {{= (optionData.nd1 * optionData.price).toFixed(4) }}  </td>
+      <td> {{= (optionData.nd1 * optionData.price).toFixed(3) }}  </td>
       <td></td>
       <td> - </td>
       <td></td>
@@ -77,7 +77,7 @@
       <td>)</td>
       <td></td>
       <td> * </td>
-      <td> {{= (optionData.nd2 * optionData.strike).toFixed(4) }} </td>
+      <td> {{= (optionData.nd2 * optionData.strike).toFixed(3) }} </td>
       <td></td>
       <td> ) </td>
     </tr>
@@ -86,7 +86,7 @@
       <td> = </td>
       <td></td>
       <td></td>
-      <td>{{= (optionData.nd1 * optionData.price).toFixed(4) }}  </td>
+      <td>{{= (optionData.nd1 * optionData.price).toFixed(3) }}  </td>
       <td></td>
       <td> - </td>
       <td></td>
@@ -97,7 +97,7 @@
       <td></td>
       <td></td>
       <td> * </td>
-      <td> {{= (optionData.nd2 * optionData.strike).toFixed(4) }} </td>
+      <td> {{= (optionData.nd2 * optionData.strike).toFixed(3) }} </td>
       <td></td>
       <td> ) </td>
     </tr>
@@ -105,17 +105,17 @@
       <td></td>
       <td> = </td>
       <td></td>
-      <td></td>
-      <td>{{= (optionData.nd1 * optionData.price).toFixed(4) }}  </td>
+      <td>(</td>
+      <td>{{= (optionData.nd1 * optionData.price).toFixed(3) }}  </td>
       <td></td>
       <td> - </td>
       <td></td>
       <td></td>
       <td></td>
       <td></td>
-      <td> {{=  (optionData.epow * (optionData.nd2 * optionData.strike)).toFixed(4)}} </td>
+      <td> {{=  (optionData.epow * (optionData.nd2 * optionData.strike)).toFixed(3)}} </td>
       
-      <td></td>
+      <td>)</td>
       <td></td>
       <td></td>
       <td></td>
@@ -176,7 +176,7 @@
       <td> {{= optionData.strike }} </td>
       <td> * e ^(</td>
       <td> - </td>
-      <td> {{= (optionData.time* optionData.rf).toFixed(4) }} </td>
+      <td> {{= (optionData.time* optionData.rf).toFixed(3) }} </td>
       <td> ) </td>
       <td> </td>
       <td> - </td>
@@ -185,9 +185,9 @@
     <tr>
       <td></td>
       <td> {{= optionData.strike }} </td>
-      <td> * (</td>
-      <td></td>
-      <td> {{= (Math.pow(Math.E,optionData.time* optionData.rf)).toFixed(4) }}  </td>
+      <td> * </td>
+      <td>(</td>
+      <td> {{= (Math.pow(Math.E,optionData.time* optionData.rf)).toFixed(3) }}  </td>
       <td> ) </td>
       <td> </td>
       <td> - </td>
@@ -198,7 +198,7 @@
       <td></td>
       <td></td>
       <td>(</td>
-      <td> {{= (optionData.strike* Math.pow(Math.E,optionData.time* optionData.rf)).toFixed(4) }} </td>
+      <td> {{= (optionData.strike* Math.pow(Math.E,optionData.time* optionData.rf)).toFixed(3) }} </td>
       <td> ) </td>
       <td> </td>
       <td> - </td>
@@ -208,9 +208,9 @@
       <td>Put Price = </td>
       <td></td>
       <td></td>
-      <td></td>
+      <td>(</td>
       <td> {{= optionData.put }} </td>
-      <td></td>
+      <td>)</td>
       <td></td>
       <td></td>
       <td></td>
@@ -235,9 +235,9 @@
       <td> Time to Maturity </td>
       <td> * ( </td>
       <td> Risk Free Rate </td>
-      <td> + ( ( </td>
+      <td> + (((</td>
       <td> Stock Volatility </td>
-      <td> ^2 </td>
+      <td> ^(2) / 2 </td>
       <td> )) / ( </td>
       <td> Stock Volatility </td>
       <td> * </td>
@@ -256,9 +256,9 @@
       <td>{{= optionData.time }}</td>
       <td> * ( </td>
       <td>{{= optionData.rf }}</td>
-      <td> + ( ( </td>
+      <td> + (( </td>
       <td>{{= optionData.vol }}</td>
-      <td> ^2 </td>
+      <td> ^(2) / 2 </td>
       <td> )) / ( </td>
       <td>{{= optionData.vol }}</td>
       <td> * </td>
@@ -270,7 +270,7 @@
       <td></td>
       <td> = </td>
       <td>Log ( </td>
-      <td>{{= (optionData.price / optionData.strike).toFixed(4) }}</td>
+      <td>{{= (optionData.price / optionData.strike).toFixed(3) }}</td>
       <td></td>
       <td></td>
       <td>) + </td>
@@ -278,12 +278,12 @@
       <td> * ( </td>
       <td>{{= optionData.rf }}</td>
       <td> + ( </td>
-      <td>{{= Math.pow(optionData.vol,2).toFixed(4) }}</td>
-      <td></td>
-      <td> ) / ( </td>
+      <td>{{= Math.pow(optionData.vol,2).toFixed(3) }}</td>
+      <td> / 2</td>
+      <td> ) ) / ( </td>
       <td>{{= optionData.vol }}</td>
       <td> * </td>
-      <td>{{= Math.pow(optionData.time, 0.5).toFixed(4) }}</td>
+      <td>{{= Math.pow(optionData.time, 0.5).toFixed(3) }}</td>
       <td>)</td>
       <td></td>
     </tr>
@@ -291,18 +291,18 @@
       <td></td>
       <td> = </td>
       <td></td>
-      <td>{{= (Math.log(optionData.price/ optionData.strike)).toFixed(4) }}</td>
+      <td>{{= (Math.log(optionData.price/ optionData.strike)).toFixed(3) }}</td>
       <td></td>
       <td></td>
-      <td>) + </td>
+      <td> + </td>
       <td></td>
       <td></td>
       <td></td>
       <td>(</td>
-      <td>{{= (optionData.time * (optionData.rf +  Math.pow(optionData.vol,2))).toFixed(4) }}</td>
+      <td>{{= (optionData.time * (optionData.rf +  Math.pow(optionData.vol,2)/2)).toFixed(3) }}</td>
       <td></td>
       <td> ) / ( </td>
-      <td>{{= (optionData.vol * Math.pow(optionData.time, 0.5)).toFixed(4)}}</td>
+      <td>{{= (optionData.vol * Math.pow(optionData.time, 0.5)).toFixed(3)}}</td>
       <td> ) </td>
       <td></td>
       <td></td>
@@ -363,27 +363,27 @@
       <td> - ( </td>
       <td> {{= optionData.vol }}</td>
       <td> * ( </td>
-      <td> {{= (Math.pow(optionData.time,0.5)).toFixed(4) }}</td>
+      <td> {{= (Math.pow(optionData.time,0.5)).toFixed(3) }}</td>
       <td> ) </td>
     </tr>
     <tr>
       <td></td>
       <td> = </td>
       <td> {{= optionData.d1 }}</td>
+      <td></td>
+      <td></td>
       <td> - ( </td>
-      <td></td>
-      <td></td>
-      <td> {{= (optionData.vol * Math.pow(optionData.time,0.5)).toFixed(4) }}</td>
+      <td> {{= (optionData.vol * Math.pow(optionData.time,0.5)).toFixed(3) }}</td>
       <td> ) </td>
     </tr>
     <tr>
       <td>D2</td>
       <td> = </td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
       <td> {{= optionData.d2 }}</td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
       <td></td>
     </tr>
   </tbody>
