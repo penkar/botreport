@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   get '/home', to: 'home#login' 
   get '/home/options' => 'home#options', :as => 'options'
-  post '/home/options' => 'home#options', :as => 'options_price'
+  post '/home/options' => 'home#options_price', :as => 'options_price'
 
   devise_for :users
   root :to => 'home#login'
