@@ -1,7 +1,7 @@
 require 'distribution'
 
 class Black_Scholes
-	attr_accessor :current_stock_price, :time, :strike_price, :risk_free_rate, :volatility, :d1, :d2, :call_price, :put_price, :nd1, :nd2
+	attr_accessor :current_stock_price, :time, :strike_price, :risk_free_rate, :volatility, :d1, :d2, :call_price, :put_price, :nd1, :nd2, :epow
 	def initialize(stock=nil, time=nil, strike=nil, rf=nil, vol=nil)
 		@current_stock_price = stock.to_f
 		@strike_price = strike.to_f
@@ -22,6 +22,7 @@ class Black_Scholes
 		@d2 = (@d1 - (@volatility*(@time**0.5)))
 		@nd1 = @distr_normal.cdf(@d1)
 		@nd2 = @distr_normal.cdf(@d2)
+		@epow = Math::E**(@time * -@risk_free_rate)
 		@call_price = ( @current_stock_price * @distr_normal.cdf(@d1)  ) - (@strike_price * Math::E**(@time * -@risk_free_rate) * @distr_normal.cdf(@d2) )
 	end
 
@@ -51,7 +52,8 @@ class Black_Scholes
 			:nd1 => @nd1.to_f.round(4),
 			:nd2 => @nd2.to_f.round(4),
 			:call => @call_price.to_f.round(4), 
-			:put => @put_price.to_f.round(4)
+			:put => @put_price.to_f.round(4),
+			:epow => @epow.to_f.round(4)
 		}
 		return hash
 	end
