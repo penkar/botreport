@@ -12,6 +12,7 @@ class HomeController < ApplicationController
   	options = Black_Scholes.new(params['price'],params['time'],params['strike'],params['rf'],params['vol'])
   	options.build_options
   	results = options.return_hash
+    p results
   	render json: results
   end
 end
