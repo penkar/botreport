@@ -1,3 +1,4 @@
+<%= render partial: 'partials' %>
 Option Pricing Tool:
 <p>Most are priced using the Black Scholes model which utilizes a combination of Stock Price, Exercise(strike) Price, Risk Free Inerest Rate, and Volatility.</p>
 <%= form_tag(options_price_path, :method => :post, remote: true) do |f| %>
