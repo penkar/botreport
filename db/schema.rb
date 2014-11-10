@@ -13,7 +13,11 @@
 
 ActiveRecord::Schema.define(version: 20141023233912) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "assumptions", force: true do |t|
+    t.integer  "project_id_id"
     t.text     "company_name"
     t.decimal  "tax_rate",      precision: 6, scale: 4
     t.decimal  "interest_rate", precision: 6, scale: 4
@@ -25,7 +29,10 @@ ActiveRecord::Schema.define(version: 20141023233912) do
     t.decimal  "price",         precision: 6, scale: 4
   end
 
+  add_index "assumptions", ["project_id_id"], name: "index_assumptions_on_project_id_id", using: :btree
+
   create_table "balance_sheets", force: true do |t|
+    t.integer  "project_id_id"
     t.text     "cash_and_cash_equivalents"
     t.text     "notes_and_accts_receivable_less_doubtful_amounts"
     t.text     "marketable_securities"
@@ -73,7 +80,10 @@ ActiveRecord::Schema.define(version: 20141023233912) do
     t.integer  "project_id"
   end
 
+  add_index "balance_sheets", ["project_id_id"], name: "index_balance_sheets_on_project_id_id", using: :btree
+
   create_table "cashflows", force: true do |t|
+    t.integer  "project_id_id"
     t.text     "net_income"
     t.text     "cf_adjustments"
     t.text     "depreciation_and_amortization"
@@ -112,6 +122,8 @@ ActiveRecord::Schema.define(version: 20141023233912) do
     t.text     "net_cash_finance"
   end
 
+  add_index "cashflows", ["project_id_id"], name: "index_cashflows_on_project_id_id", using: :btree
+
   create_table "income_stmts", force: true do |t|
     t.integer  "revenue_segments_id"
     t.text     "cost_and_expenses_segment1"
@@ -138,10 +150,13 @@ ActiveRecord::Schema.define(version: 20141023233912) do
   create_table "projects", force: true do |t|
     t.string   "name"
     t.text     "description"
+    t.integer  "user_id_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
   end
+
+  add_index "projects", ["user_id_id"], name: "index_projects_on_user_id_id", using: :btree
 
   create_table "ratios", force: true do |t|
     t.integer "project_id"
@@ -150,17 +165,19 @@ ActiveRecord::Schema.define(version: 20141023233912) do
     t.text    "description"
   end
 
-  add_index "ratios", ["project_id"], name: "index_ratios_on_project_id"
+  add_index "ratios", ["project_id"], name: "index_ratios_on_project_id", using: :btree
 
   create_table "revenues", force: true do |t|
     t.string   "name"
+    t.integer  "incomestmt_id"
     t.text     "amount"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "project_id"
   end
 
-  add_index "revenues", ["project_id"], name: "index_revenues_on_project_id"
+  add_index "revenues", ["incomestmt_id"], name: "index_revenues_on_incomestmt_id", using: :btree
+  add_index "revenues", ["project_id"], name: "index_revenues_on_project_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "name"
@@ -179,7 +196,7 @@ ActiveRecord::Schema.define(version: 20141023233912) do
     t.string   "last_sign_in_ip"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
 end
