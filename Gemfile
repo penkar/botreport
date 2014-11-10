@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 ruby '2.0.0'
-gem 'hirb'
-gem 'pry-debugger'
+gem 'hirb', group: :development
+gem 'pry-debugger', group: :development
 gem 'devise'
 gem 'distribution'
 
