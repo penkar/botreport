@@ -19,7 +19,7 @@ List of current reports: Powered by The New York Times<br>
 		for(var i = 0; i < projectlist.length ; i++){
 			var subject = projectlist[i];
 			var article = '';
-			$.getJSON('http://api.nytimes.com/svc/search/v2/articlesearch.json?q=' + subject + '+business&fq=subject(' + subject + ')&api-key=c0daf1e9c1c0f60021fda75b32898e6b:4:70052310', function(data) {
+			$.getJSON('https://api.nytimes.com/svc/search/v2/articlesearch.json?q=' + subject + '+business&fq=subject(' + subject + ')&api-key=<%= ENV['NYTIMES_API_KEY'] %>', function(data) {
 				for(var j = 0; j < 5; j ++){
 					var header = data['response']['docs'][j]['headline']['print_headline'] || 'Undefined Title';
 					var snippet = data['response']['docs'][j]['snippet'];
