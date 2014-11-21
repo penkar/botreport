@@ -128,7 +128,6 @@ var newIncomeFromOperations = function(){
 }
 
 var newIntandOtherIncome = function(){
-	console.log('hi')
 	var growth = parseFloat(prompt('By what percentage do you think future expectations for Interest and other Income will increase or decrease?'));
 	var newIncome = growth * parseFloat(incomeObj['interest_and_other_income'][0] || incomeObj['interest_and_other_income']);
 	incomeObj['interest_and_other_income'] = newIncome;
