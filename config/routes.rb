@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   get '/home', to: 'home#login' 
   get '/home/options' => 'home#options', :as => 'options'
   post '/home/options' => 'home#options_price', :as => 'options_price'
+  get '/home/ggm' => 'home#ggm', :as => 'ggm'
+
 
   devise_for :users
   root :to => 'home#login'

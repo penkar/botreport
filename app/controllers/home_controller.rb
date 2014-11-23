@@ -15,6 +15,10 @@ class HomeController < ApplicationController
     p results
   	render json: results
   end
+
+  def ggm
+    @user = current_user.id
+  end
 end
 
 
