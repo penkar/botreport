@@ -12,12 +12,23 @@ class HomeController < ApplicationController
   	options = Black_Scholes.new(params['price'],params['time'],params['strike'],params['rf'],params['vol'])
   	options.build_options
   	results = options.return_hash
-    p results
   	render json: results
   end
 
   def ggm
     @user = current_user.id
+    # variable = FinanceEngine::Equity.gordon_growth_model(hash)
+  end
+
+  def ggm_calc
+    @user = current_user.id
+    hash = {}
+    hash[:dividend]= params["dividend"].to_f if params["dividend"].length>0
+    hash[:growth]= params["growth"].to_f if params["growth"].length>0
+    hash[:value]= params["value"].to_f if params["value"].length>0
+    hash[:rate]= params["rate"].to_f if params["rate"].length>0
+    variable = FinanceEngine::Equity.gordon_growth_model(hash)
+    render json: variable
   end
 end
 
