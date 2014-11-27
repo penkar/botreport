@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get '/home/options' => 'home#options', :as => 'options'
   post '/home/options' => 'home#options_price', :as => 'options_price'
   get '/home/ggm' => 'home#ggm', :as => 'ggm'
+  post '/home/ggm' => 'home#ggm_calc', :as => 'ggm_calc'
 
 
   devise_for :users

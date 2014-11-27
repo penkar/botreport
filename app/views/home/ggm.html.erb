@@ -3,8 +3,10 @@
 Value = Dividend * (1 + Growth) / (Rate of Return - Growth)
 <p>Using any three of these inputs you can figure out the fourth. Fill in the values you have below and the fourth value will be returned to you.</p>
 
-<%= text_field_tag :value %>: Value<br>
-<%= text_field_tag :dividend %>: Dividend<br>
-<%= text_field_tag :rate %>: Rate of Return<br>
-<%= text_field_tag :growth %>: Growth<br>
-<%= submit_tag "Submit" %>
+<%= form_tag(ggm_calc_path, :method => :post, remote: true) do |f| %>
+	<%= text_field_tag :value %>: Value<br>
+	<%= text_field_tag :dividend %>: Dividend<br>
+	<%= text_field_tag :rate %>: Rate of Return<br>
+	<%= text_field_tag :growth %>: Growth<br>
+	<%= submit_tag "Submit" %>
+<% end %>
