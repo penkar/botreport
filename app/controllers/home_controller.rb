@@ -27,7 +27,7 @@ class HomeController < ApplicationController
     hash[:growth]= params["growth"].to_f if params["growth"].length>0
     hash[:value]= params["value"].to_f if params["value"].length>0
     hash[:rate]= params["rate"].to_f if params["rate"].length>0
-    variable = FinanceEngine::Equity.gordon_growth_model(hash)
+    variable = FinanceEngine::Equity.gordon_growth_model(hash).round(4)
     render json: variable
   end
 end
