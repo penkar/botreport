@@ -1,13 +1,14 @@
 <p>-What is the Gordon Growth Model?</p>
-<p>The general idea	is the value of a company that constantly pays out dividends has a value that can be calculated from these ongoing payments.</p>
+
+<p>The general idea	is the value of a company that constantly pays out dividends at a constang rate has a value that can be calculated from these ongoing payments. The model solves for the present value of the infinite series of future dividends.</p>
 Value = Dividend * (1 + Growth) / (Rate of Return - Growth)
 <p>Using any three of these inputs you can figure out the fourth. Fill in the values you have below and the fourth value will be returned to you.</p>
 
 <%= form_tag(ggm_calc_path, :method => :post, remote: true) do |f| %>
 	<%= text_field_tag :value %>: Value<br>
-	<%= text_field_tag :dividend %>: Dividend<br>
-	<%= text_field_tag :rate %>: Rate of Return<br>
-	<%= text_field_tag :growth %>: Growth<br>
+	<%= text_field_tag :dividend %>: Dividend - Yearly amount.<br>
+	<%= text_field_tag :rate %>: Rate of Return - 0.05 format.<br>
+	<%= text_field_tag :growth %>: Growth - 0.02 format<br>
 	<%= submit_tag "Submit" %>
 <% end %>
 
