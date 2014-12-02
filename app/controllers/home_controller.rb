@@ -15,6 +15,17 @@ class HomeController < ApplicationController
   	render json: results
   end
 
+  def american_options
+    @user = current_user.id
+  end
+
+  def american_options_price
+    options = Black_Scholes.new(params['price'],params['time'],params['strike'],params['rf'],params['vol'])
+    options.build_options
+    results = options.return_hash
+    render json: results
+  end
+  
   def ggm
     @user = current_user.id
     # variable = FinanceEngine::Equity.gordon_growth_model(hash)
