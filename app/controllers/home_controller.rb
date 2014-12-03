@@ -21,8 +21,12 @@ class HomeController < ApplicationController
 
   def american_options_price
     option = FinanceEngine::American_Options.new(params['price'].to_f, params['vol'].to_f, params['rf'].to_f, params['strike'].to_f)
-    option.build_american_options(params['time'].to_f, params['nper'].to_f)
-    prices = {'put'=> option.tree['original_']['put'], 'call'=>.tree['original_']['call']}
+    p option
+    p params['time'].to_f
+    p params['nper'].to_i
+    option.build_american_options(1, 4)
+    p option
+    prices = {'put'=> option.tree['original_']['put'], 'call'=>option.tree['original_']['call']}
     render json: prices
   end
   

@@ -1,7 +1,7 @@
 <p>What is the difference between American Options and European Options?</p>
 <p>American options can be exercised at any point, while European options can only be exercised at the expiration date. Call options give the the holder the right, not the obligation to buy a security at a given price. Put options give the holder the right, not the obligation to sell a security at a given price. </p>
 <p>American options will alway be worth as much as European options. They can be worth more depending on expectations of the stock. Changes such as dividends or changes in the market could also contribute. It is worth noting that if an option is exercised earlier you would expect interest income above what you would receive from European options.</p>
-<%= form_tag(options_price_path, :method => :post, remote: true) do |f| %>
+<%= form_tag(american_options_price_path, :method => :post, remote: true) do |f| %>
 	<table>
 		<tbody>
 			<tr>
@@ -32,3 +32,7 @@
 	</table>
 <%= submit_tag "Create" %>
 <% end %>
+
+
+
+<script src="american_options.js"></script>

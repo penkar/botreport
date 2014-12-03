@@ -4,7 +4,7 @@ gem 'hirb', group: :development
 gem 'pry-debugger', group: :development
 gem 'devise'
 gem 'distribution'
-gem 'finance_engine'
+gem 'finance_engine', '0.0.3'
 gem 'rails_12factor'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
