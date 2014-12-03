@@ -20,10 +20,10 @@ class HomeController < ApplicationController
   end
 
   def american_options_price
-    options = Black_Scholes.new(params['price'],params['time'],params['strike'],params['rf'],params['vol'])
-    options.build_options
-    results = options.return_hash
-    render json: results
+    option = FinanceEngine::American_Options.new(params['price'].to_f, params['vol'].to_f, params['rf'].to_f, params['strike'].to_f)
+    option.build_american_options(params['time'].to_f, params['nper'].to_f)
+    prices = {'put'=> option.tree['original_']['put'], 'call'=>.tree['original_']['call']}
+    render json: prices
   end
   
   def ggm
