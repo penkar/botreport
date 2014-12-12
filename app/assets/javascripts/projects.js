@@ -1,4 +1,4 @@
-$(document).ready(function(){
+var ready = function(){
 	$('#proforma').on('click', function(){
 		$('#ratio').hide(1000);
 		proforma();
@@ -18,7 +18,7 @@ $(document).ready(function(){
 		$(this).toggleClass('selected');
 		$('#'+$(this).data('link')).toggle();
 	});
-});
+};
 
 /////////////////////////////////////////
 //Get first Child of class
@@ -150,3 +150,6 @@ var newNetIncome = function(){
 	incomeObj['net_income_from_discontinued_operations'] = parseFloat(prompt('Any assumptions concerning future discontinued operations? (Dollar figure)'));
 	incomeObj['net_income'] = parseFloat(incomeObj['net_income_from_discontinued_operations']+parseFloat(incomeObj['net_income_from_continuing_operations'])-incomeObj['tax_expense']);
 }
+
+$(document).ready(ready);
+$(document).on('page:load', ready)
