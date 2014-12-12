@@ -1,4 +1,4 @@
-$(document).ready(function(){
+var ready = function(){
 	$('form').on('ajax:success', function(event, data, status, xhr) {
 		var options = data;
 		dropOption();
@@ -43,5 +43,8 @@ $(document).ready(function(){
 		$('#results').append(htmlputdescr);
 		$('#results').append(htmlput);
 	}
-})
+}
 
+
+$(document).ready(ready);
+$(document).on('page:load', ready)

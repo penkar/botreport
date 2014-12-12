@@ -15,7 +15,7 @@ List of current reports: Powered by The New York Times<br>
 
 <script type="text/javascript">
   var projectlist = "<%= @projectlist %>".replace(/&quot;|\[|\]/g,'').split(',')
-	$(document).on('ready', function(){
+	var ready = function(){
 		for(var i = 0; i < projectlist.length ; i++){
 			var subject = projectlist[i];
 			var article = '';
@@ -30,5 +30,8 @@ List of current reports: Powered by The New York Times<br>
 				}
 			})
 		}
-	})
+	}
+
+	$(document).ready(ready);
+	$(document).on('page:load', ready)
 </script>
