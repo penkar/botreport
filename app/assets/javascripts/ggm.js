@@ -2,7 +2,6 @@ var ready = function(){
 	$('form').on('ajax:success', function(event, data, status, xhr) {
 		count.variable = data;
 		decide();
-		document.getElementById(count.empty).value = data;
 	});
 	var count = {
 		empty:'',
@@ -10,14 +9,14 @@ var ready = function(){
 	}
 	var decide = function(){
 		count.count = 0
-		if (!document.getElementById('growth').value.length){
-			count.empty = 'growth';
-		} else if (!document.getElementById('value').value.length){
-			count.empty = 'value';
-		} else if (!document.getElementById('rate').value.length){
-			count.empty = 'rate';
-		} else if (!document.getElementById('dividend').value.length){
-			count.empty = 'dividend';
+		if (!document.getElementById('growth').value){
+			document.getElementById('growth').value = count.variable;
+		} else if (!document.getElementById('value').value){
+			document.getElementById('value').value = count.variable;
+		} else if (!document.getElementById('rate').value){
+			document.getElementById('rate').value = count.variable;
+		} else if (!document.getElementById('dividend').value){
+			document.getElementById('dividend').value = count.variable;
 		}
 	}
 }
