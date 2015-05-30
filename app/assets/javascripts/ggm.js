@@ -1,36 +1,23 @@
 var ready = function(){
 	$('form').on('ajax:success', function(event, data, status, xhr) {
 		count.variable = data;
-		console.log(data);
 		decide();
-		$(count.empty).val(data)
+		document.getElementById(count.empty).value = data;
 	});
-	var variable = ''
 	var count = {
 		empty:'',
 		variable:''
 	}
 	var decide = function(){
 		count.count = 0
-		if ($('#growth').val().length !==0){
-			count.count += 1
-		} else {
-			count.empty = '#growth'
-		}
-		if ($('#value').val().length !==0){
-			count.count += 1
-		} else {
-			count.empty = '#value'
-		}
-		if ($('#rate').val().length !==0){
-			count.count += 1
-		} else {
-			count.empty = '#rate'
-		}
-		if ($('#dividend').val().length !==0){
-			count.count += 1
-		} else {
-			count.empty = '#dividend'
+		if (!document.getElementById('growth').value.length){
+			count.empty = 'growth';
+		} else if (!document.getElementById('value').value.length){
+			count.empty = 'value';
+		} else if (!document.getElementById('rate').value.length){
+			count.empty = 'rate';
+		} else if (!document.getElementById('dividend').value.length){
+			count.empty = 'dividend';
 		}
 	}
 }
