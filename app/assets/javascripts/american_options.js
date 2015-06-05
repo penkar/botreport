@@ -27,40 +27,69 @@ var ready = function(){
 	}
 	
 	var addOption = function(optionData){
-		$('#results').contents().toggle(800).remove();
-		var htmlcalldescr = '<br><hr><strong>What is a Call option?</strong><p>A call option represents the ability to purchase a stock at a given (strike) price. It is a hedge against upwards movement. So if you buy a call option with a strike of $20 that will expire in one year, and the price a year from now is $50, you can then buy for $20, sell for $50 and essentially receive a $30 profit.</p>';
-		var htmlputdescr = '<br><hr><strong>What is a Put option?</strong><p>A put option represent the ability to sell a stock at a given (strike) price. It is a hedge against downward movement. So if you sell a put option with a strike of $20 that will expire in one year, and the price a year from now is $10, you can buy for $10, then sell for $20 and essentally receive a $10 profit.</p>';
-		var htmld1descr = '<br><hr><strong>What exactly is D1?</strong><p>D1 is the z-value present value of the stock finishing in a profitable position. Normal distance converts the D1 z-figure into a success percentage. Essentially N(D1) is the present value of an in the money call option.</p>';
-		var htmld2descr = '<br><hr><strong>What exactly is D2?</strong><p>D2 represents the present value of money spent to exercise the option given its probability of being in the money.</p>';
+		var results = document.getElementById('results');
 
-		var callHTML = $('#callTemplate').html(); 
-		var callTmplFunc = _.template(callHTML);
-		var htmlcall = callTmplFunc({
+		var htmlcalldescr = document.createElement('div')
+		var strong = document.createElement('strong')
+		strong.innerText= 'What is a Call option?';
+		var p = document.createElement('p')
+		p.innerText = "A call option represents the ability to purchase a stock at a given (strike) price. It is a hedge against upwards movement. So if you buy a call option with a strike of $20 that will expire in one year, and the price a year from now is $50, you can then buy for $20, sell for $50 and essentially receive a $30 profit.";
+		htmlcalldescr.appendChild(strong); 
+		htmlcalldescr.appendChild(p); 
+		var htmlputdescr = document.createElement('div')
+		var strong = document.createElement('strong')
+		strong.innerText= 'What is a Put option?';
+		var p = document.createElement('p')
+		p.innerText = "A put option represents the ability to sell a stock at a given (strike) price. It is a hedge against downward movement. So if you sell a put option with a strike of $20 that will expire in one year, and the price a year from now is $10, you can buy for $10, then sell for $20 and essentally receive a $10 profit.";
+		htmlputdescr.appendChild(strong); 
+		htmlputdescr.appendChild(p); 
+		var htmld1descr = document.createElement('div')
+		var strong = document.createElement('strong')
+		strong.innerText= 'What exactly is D1?';
+		var p = document.createElement('p')
+		p.innerText = "D1 is the z-value present value of the stock finishing in a profitable position. Normal distance converts the D1 z-figure into a success percentage. Essentially N(D1) is the present value of an in the money call option.";
+		htmld1descr.appendChild(strong); 
+		htmld1descr.appendChild(p); 
+		var htmld2descr = document.createElement('div')
+		var strong = document.createElement('strong')
+		strong.innerText= 'What exactly is D2?';
+		var p = document.createElement('p')
+		p.innerText = "D2 represents the present value of money spent to exercise the option given its probability of being in the money.";
+		htmld2descr.appendChild(strong); 
+		htmld2descr.appendChild(p); 
+
+		var callHTML = document.getElementById('callTemplate').innerHTML;
+		var callHTML = _.template(callHTML);
+		var callHTML = callHTML({
 			optionData: optionData
 		});
-		var putHTML = $('#putTemplate').html(); 
-		var putTmplFunc = _.template(putHTML);
-		var htmlput = putTmplFunc({
+		var putHTML = document.getElementById('putTemplate').innerHTML; 
+		var putHTML = _.template(putHTML);
+		var putHTML = putHTML({
 			optionData: optionData
 		});
-		var d1HTML = $('#d1Template').html(); 
-		var d1TmplFunc = _.template(d1HTML);
-		var htmld1 = d1TmplFunc({
+		var d1HTML = document.getElementById('d1Template').innerHTML; 
+		var d1HTML = _.template(d1HTML);
+		var d1HTML = d1HTML({
 			optionData: optionData
 		});
-		var d2HTML = $('#d2Template').html(); 
-		var d2TmplFunc = _.template(d2HTML);
-		var htmld2 = d2TmplFunc({
+		var d2HTML = document.getElementById('d2Template').innerHTML;
+		var d2HTML = _.template(d2HTML);
+		var d2HTML = d2HTML({
 			optionData: optionData
 		});
-		$('#results').append(htmld1descr);
-		$('#results').append(htmld1);
-		$('#results').append(htmld2descr);
-		$('#results').append(htmld2);
-		$('#results').append(htmlcalldescr);
-		$('#results').append(htmlcall);
-		$('#results').append(htmlputdescr);
-		$('#results').append(htmlput);
+		results.appendChild(htmld1descr);
+		var div = document.createElement('div');
+		div.innerHTML = d1HTML;results.appendChild(div);
+		results.appendChild(htmld2descr);
+		var div = document.createElement('div');
+		div.innerHTML = d2HTML;results.appendChild(div);
+		results.appendChild(htmlcalldescr);
+		var div = document.createElement('div');
+		div.innerHTML = callHTML;results.appendChild(div);
+		results.appendChild(htmlputdescr);
+		var div = document.createElement('div');
+		div.innerHTML = putHTML;results.appendChild(div);
 	}
 };
 
