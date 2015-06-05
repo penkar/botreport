@@ -1,23 +1,42 @@
 var ready = function(){
-	$('#proforma').on('click', function(){
-		$('#ratio').hide(1000);
-		proforma();
-		$('#ratiolink').addClass('selected');
+	var proformaEle = document.getElementById('proforma');
+	var ratio = document.getElementById('ratio');
+	var ratiolink = document.getElementById('ratiolink')
+	var proj = document.getElementsByClassName('proj');
+	var commonsize = document.getElementById('commonsize');
+
+	proformaEle.addEventListener('click', function(){
+		ratio.style.display = 'none';
+		if(!ratiolink.className.includes('selected')){
+			ratiolink.className += ' selected';
+		}
+		proforma()
+	});
+
+	commonsize.addEventListener('click', function(){
+		if(!ratiolink.className.includes('selected')){
+			ratiolink.className += ' selected';
+		}
+		ratio.style.display = 'none';
+		$(this).toggleClass('selected');
+		_.each($('.column'), function(td){
+			$(td).text($(td).text() == $(td).data("original") ? $(td).data("cs") : $(td).data("original"));
+			$(td).toggle('slow').toggle('slow');
+		});
 	})
-	$("#commonsize").on("click", function () {
-		////////////////////ADDD FUNCTIONALITY TO CLOSE RATIOS AND HIGHLIGHT RATIOS BUTTON WHEN COMMONSIZE IS HIT. POSSIBLLY ADD ID TO RATIO LINK?
-		$('#ratiolink').addClass('selected');
-		$('#ratio').hide(1000);
-		$(this).toggleClass('selected');
-	  _.each($('.column'), function(td){
-	  	$(td).text($(td).text() == $(td).data("original") ? $(td).data("cs") : $(td).data("original"));
-	  	$(td).toggle('slow').toggle('slow');
-	  })
-	});
-	$('.proj').on('click', function(){
-		$(this).toggleClass('selected');
-		$('#'+$(this).data('link')).toggle();
-	});
+	for(var i = 0; i < proj.length; i++){
+		proj[i].addEventListener('click', function(){
+			var link = this.getAttribute('data-link');
+			if(link){link = document.getElementById(link)};
+			if(this.className.includes('selected')){
+				this.className = this.className.replace(' selected', '');
+				if(link){link.style.display = 'initial'};
+			} else {
+				this.className += ' selected';
+				if(link){link.style.display = 'none'};
+			}
+		});
+	}
 };
 
 /////////////////////////////////////////
