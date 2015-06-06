@@ -18,12 +18,16 @@ var ready = function(){
 			ratiolink.className += ' selected';
 		}
 		ratio.style.display = 'none';
-		$(this).toggleClass('selected');
-		_.each($('.column'), function(td){
-			$(td).text($(td).text() == $(td).data("original") ? $(td).data("cs") : $(td).data("original"));
-			$(td).toggle('slow').toggle('slow');
-		});
-	})
+		var columns = document.getElementsByClassName('column');
+		for(var i = 0; i < columns.length; i++){
+			var col = columns[i];
+			if(!commonsize.className.includes('selected')){
+				col.innerText = col.getAttribute('data-cs');
+			} else {
+				col.innerText = col.getAttribute('data-original');
+			}
+		}
+	});
 	for(var i = 0; i < proj.length; i++){
 		proj[i].addEventListener('click', function(){
 			var link = this.getAttribute('data-link');
