@@ -89,7 +89,7 @@ var proforma = function(){
 /////////////////////
 var appendToForm = function(array, object, total){
 	_.each(array, function(x){
-		$('.'+ x).prepend('<td class="column" data-cs="'+parseFloat(object[x]/ total).toFixed(2) +'%" data-original="$'+parseFloat(object[x]).toFixed(2) +'">$' + parseFloat(object[x]).toFixed(2) + '</td>');
+		$('.'+ x).prepend('<td class="column" data-cs="'+parseFloat(object[x]/ total*100).toFixed(2) +'%" data-original="$'+parseFloat(object[x]).toFixed(2) +'">$' + parseFloat(object[x]).toFixed(2) + '</td>');
 	})
 }
 
