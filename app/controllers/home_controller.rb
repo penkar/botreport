@@ -26,7 +26,7 @@ class HomeController < ApplicationController
     prices = {'put'=> option.tree['original_']['put'], 'call'=>option.tree['original_']['call']}
     render json: prices
   end
-  
+
   def ggm
     @user = current_user.id
     # variable = FinanceEngine::Equity.gordon_growth_model(hash)
