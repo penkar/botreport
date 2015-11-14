@@ -61,10 +61,10 @@ td {
 	text-align:right;
 	border-bottom: solid 1px black;
 	&.title {
-		min-width:350px;	
+		min-width:350px;
 	}
 	&.column {
-		min-width:60px;	
+		min-width:60px;
 	}
 }
 .title, .column {
@@ -83,7 +83,6 @@ td {
 	}
 }
 
-
 .clearfix:after {
     content: ".";
     display: block;
@@ -92,15 +91,15 @@ td {
     line-height: 0;
     height: 0;
 }
- 
+
 .clearfix {
     display: inline-block;
 }
- 
+
 html[xmlns] .clearfix {
     display: block;
 }
- 
+
 * html .clearfix {
     height: 1%;
 }

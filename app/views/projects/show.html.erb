@@ -10,10 +10,11 @@
 	var assumption = <%= @assumption.to_json.html_safe %>;
 </script>
 
-<span style="font-weight:strong;font-size:1.5em;"><%= @project.name %></span> 
+<span style="font-weight:strong;font-size:1.5em;"><%= @project.name %></span>
 <a class='proj' id='proforma'>Create ProForma</a>
 <a class='proj' id='commonsize' >Common Size</a>
-<br><br>
+<br>
+<br>
 <a class='proj' href="#" data-link="ratio" id='ratiolink'>Ratios</a>
 <a class='proj' href="#" data-link="revenue">Revenues</a>
 <a class='proj' href="#" data-link="income">Income Statement</a>
@@ -25,15 +26,15 @@
 <br>
 <div class='bar'>Financial Ratios</div>
 <div class="clearfix" id='ratio'>
-<table class="ratios">
-	<% @project.ratios.each do |ratio| %>
-		<tr class="<%= ratio.name.gsub(' ','_') %>">
-			<td><%= ratio.name %></td>
-			<td><%= ratio.ratio %></td>
-			<td><%= ratio.description %></td>
-		</tr>
-	<% end %>
-</table>
+	<table class="ratios">
+		<% @project.ratios.each do |ratio| %>
+			<tr class="<%= ratio.name.gsub(' ','_') %>">
+				<td><%= ratio.name %></td>
+				<td><%= ratio.ratio %></td>
+				<td><%= ratio.description %></td>
+			</tr>
+		<% end %>
+	</table>
 </div>
 
 <br>
@@ -51,7 +52,6 @@
 	<% end %>
 </table>
 </div>
-
 <br>
 <div class='bar'>Income Statement</div>
 <div class="clearfix" id='income'>
@@ -71,7 +71,6 @@
 	<% end %>
 </table>
 </div>
-
 <br>
 <div class='bar'>Balance Sheet</div>
 <div class="clearfix" id='balance'>
@@ -91,7 +90,6 @@
 	<% end %>
 </table>
 </div>
-
 <br>
 <div class='bar'>Cash Flow Statement</div>
 <div class="clearfix" id='cashflow'>
@@ -128,6 +126,5 @@
 	</tr><tr class="price">
 		<td><%= @assumption.price %></td><td>Price</td>
 	</tr>
-
 </table>
 </div>

@@ -1,6 +1,3 @@
-// Place all the styles related to the Users controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
 p{
 	font-family: 'Raleway', sans-serif;
 }
@@ -10,7 +7,7 @@ p{
 	border-bottom-left-radius: 15px;
 	padding-top:20px;
 	.title {
-		float:left; 
+		float:left;
 		width:45%;
 	}
 
@@ -45,7 +42,6 @@ table{
 	}
 }
 
-
 a{
 	color:blue;
 	&:visited{
@@ -53,15 +49,6 @@ a{
 	&:hover{
 	}
 }
-
-
-
-
-
-
-
-
-
 
 .clearfix:after {
     content: ".";
@@ -71,15 +58,15 @@ a{
     line-height: 0;
     height: 0;
 }
- 
+
 .clearfix {
     display: block;
 }
- 
+
 html[xmlns] .clearfix {
     display: block;
 }
- 
+
 * html .clearfix {
     height: 1%;
 }

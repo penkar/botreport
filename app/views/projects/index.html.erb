@@ -1,18 +1,12 @@
 NEWS FLASH!
 
 List of current reports: Powered by The New York Times<br>
-<main>| 
+<main>|
 <% @projectlist.each do |proj| %>
-	<%= proj %> | 
+	<%= proj %> |
 <% end %>
 </main>
 <div id='c'></div>
-
-
-
-
-
-
 <script type="text/javascript">
   var projectlist = "<%= @projectlist %>".replace(/&quot;|\[|\]/g,'').split(',')
 	var ready = function(){
@@ -26,7 +20,6 @@ List of current reports: Powered by The New York Times<br>
 					var link = data['response']['docs'][j]['web_url'];
 					html = "<span class='header' style='color:red;'>"+ header +"</span><article>" + snippet + "</article><span class='link'><a href='" + link + "'>" + link + "</a></span><br>";
 					$('#c').append(html);
-					console.log(data);
 				}
 			})
 		}

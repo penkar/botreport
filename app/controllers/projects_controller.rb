@@ -31,7 +31,6 @@ class ProjectsController < ApplicationController
 		@projectlist = User.find(current_user.id).projects.map{|obj| obj.name}
 	end
 
-
 	def import(file, project_id)
 		a = Bot_Report::Reader.new
 		a.readfile(file, project_id)

@@ -1,55 +1,44 @@
 <!DOCTYPE html>
 <html>
-<head>
-
-  <title>Botreport</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-  <link href='http://fonts.googleapis.com/css?family=Raleway:300' rel='stylesheet' type='text/css'>	
-  <link href='http://fonts.googleapis.com/css?family=Play' rel='stylesheet' type='text/css'>
-  <link href='http://fonts.googleapis.com/css?family=Radley:400italic' rel='stylesheet' type='text/css'>
-</head>
-<body>
-<div class='navbar'> 
-	<% if current_user %>
-	<%= link_to 'Home', root_path %> | 
-	<%= link_to 'Your Page', user_path(current_user.id) %> | 
-	<%= link_to 'New Report', new_user_project_path(current_user.id) %> | 
-	<%= link_to 'News Flash', user_projects_path(current_user.id) %> | 
-	<%= link_to 'Euro Put/Call', options_path(current_user.id) %> | 
-	<%= link_to 'American Put/Call', american_options_path(current_user.id) %> | 
-	<%= link_to 'GGM', ggm_path(current_user.id) %>
-	<% end %>
-
-	<div class="login">
-		<% if current_user %>
-		  Welcome back to the BotReport. You are signed in as <%= current_user.email %>. If this is not you please <span style="color:red"><%= link_to 'sign out.', destroy_user_session_path, :method => :delete %></span>
-		<% else %>
-		  Welcome to the BotReport. You currently are not  <span style="color:red"><%= link_to 'signed in', new_user_session_path %></span>. 
-		<% end %>
-	</div>
-</div>
-
-
-
-<div class="header clearfix">
-	<div class="title">
-		<span class="logo"><span style="font-family: 'Play', sans-serif;">Bot</span><span style="font-family: 'Radley', serif;font-style:italic;color:red;">Report</span></span><br>
-		<span class='tag'>One Step Closer to the Robot Apocalypse</span><br>
-	</div>
-
-</div>
-
-
-
-
-<div id='primary-content'>
-	<div class="content">
-		<%= yield %>
-	</div>
-</div>
-
-<script src="/assets/transitions.js" type="text/javascript"></script>
-</body>
+  <head>
+    <title>Botreport</title>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+    <link href='http://fonts.googleapis.com/css?family=Raleway:300' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Play' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Radley:400italic' rel='stylesheet' type='text/css'>
+  </head>
+  <body>
+    <div class='navbar'>
+    	<% if current_user %>
+    	<%= link_to 'Home', root_path %> |
+    	<%= link_to 'Your Page', user_path(current_user.id) %> |
+    	<%= link_to 'New Report', new_user_project_path(current_user.id) %> |
+    	<%= link_to 'News Flash', user_projects_path(current_user.id) %> |
+    	<%= link_to 'Euro Put/Call', options_path(current_user.id) %> |
+    	<%= link_to 'American Put/Call', american_options_path(current_user.id) %> |
+    	<%= link_to 'GGM', ggm_path(current_user.id) %>
+    	<% end %>
+    	<div class="login">
+    		<% if current_user %>
+    		  Welcome back to the BotReport. You are signed in as <%= current_user.email %>. If this is not you please <span style="color:red"><%= link_to 'sign out.', destroy_user_session_path, :method => :delete %></span>
+    		<% else %>
+    		  Welcome to the BotReport. You currently are not  <span style="color:red"><%= link_to 'signed in', new_user_session_path %></span>.
+    		<% end %>
+    	</div>
+    </div>
+    <div class="header clearfix">
+    	<div class="title">
+    		<span class="logo"><span style="font-family: 'Play', sans-serif;">Bot</span><span style="font-family: 'Radley', serif;font-style:italic;color:red;">Report</span></span><br>
+    		<span class='tag'>One Step Closer to the Robot Apocalypse</span><br>
+    	</div>
+    </div>
+    <div id='primary-content'>
+    	<div class="content">
+    		<%= yield %>
+    	</div>
+    </div>
+    <script src="/assets/transitions.js" type="text/javascript"></script>
+  </body>
 </html>
