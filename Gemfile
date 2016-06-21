@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+ruby '2.3.0'
 gem 'hirb', group: :development
 gem 'byebug', group: :development
 gem 'devise'
