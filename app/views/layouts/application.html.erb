@@ -10,27 +10,28 @@
     <link href='http://fonts.googleapis.com/css?family=Radley:400italic' rel='stylesheet' type='text/css'>
   </head>
   <body>
-    <div class='navbar'>
-    	<% if current_user %>
-    	<%= link_to 'Home', root_path %> |
-    	<%= link_to 'Your Page', user_path(current_user.id) %> |
-    	<%= link_to 'New Report', new_user_project_path(current_user.id) %> |
-    	<%= link_to 'News Flash', user_projects_path(current_user.id) %> |
-    	<%= link_to 'Euro Put/Call', options_path(current_user.id) %> |
-    	<%= link_to 'American Put/Call', american_options_path(current_user.id) %> |
-    	<%= link_to 'GGM', ggm_path(current_user.id) %>
-    	<% end %>
-    	<div class="login">
-    		<% if current_user %>
-    		  Welcome back to the BotReport. You are signed in as <%= current_user.email %>. If this is not you please <span style="color:red"><%= link_to 'sign out.', destroy_user_session_path, :method => :delete %></span>
-    		<% else %>
-    		  Welcome to the BotReport. You currently are not  <span style="color:red"><%= link_to 'signed in', new_user_session_path %></span>.
-    		<% end %>
-    	</div>
-    </div>
+    <nav class='navbar navbar-fixed-top navbar-dark bg-inverse'>
+      <a class="navbar-brand" href="#">Bot Report</a>
+      <div class="pull-xs-right">
+      	<% if current_user %>
+          <ul class="nav navbar-nav">
+          	<li class="nav-item active"><%= link_to 'Home', root_path, class:'nav-link' %></li>
+          	<li class="nav-item active"><%= link_to 'Your Page', user_path(current_user.id), class:'nav-link' %></li>
+          	<li class="nav-item active"><%= link_to 'New Report', new_user_project_path(current_user.id), class:'nav-link' %></li>
+          	<li class="nav-item active"><%= link_to 'News', user_projects_path(current_user.id), class:'nav-link' %></li>
+          	<li class="nav-item active"><%= link_to 'Euro Opts', options_path(current_user.id), class:'nav-link' %></li>
+          	<li class="nav-item active"><%= link_to 'Amer Opts', american_options_path(current_user.id), class:'nav-link' %></li>
+          	<li class="nav-item active"><%= link_to 'GGM', ggm_path(current_user.id), class:'nav-link' %></li>
+            <li class="nav-item active"><%= link_to 'Sign Out', destroy_user_session_path, :method => :delete, class:'nav-link' %></li>
+          </ul>
+        <% else %>
+          Welcome to the BotReport. You currently are not  <span style="color:red"><%= link_to 'signed in', new_user_session_path %></span>.
+        <% end %>
+      </div>
+    </nav>
+
     <div class="header clearfix">
     	<div class="title">
-    		<span class="logo"><span style="font-family: 'Play', sans-serif;">Bot</span><span style="font-family: 'Radley', serif;font-style:italic;color:red;">Report</span></span><br>
     		<span class='tag'>One Step Closer to the Robot Apocalypse</span><br>
     	</div>
     </div>
