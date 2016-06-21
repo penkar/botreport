@@ -14,6 +14,9 @@
  *= require_self
  */
 @import "bootstrap";
+#primary-content {
+	margin-top: 54px;
+}
 h5{
 	margin:5px;
 }
@@ -21,12 +24,6 @@ body{
 	background-color: #F0F8FF;
 	margin:0;
 }
-
-.content {
-	width:1000px;
-	margin:auto;
-}
-
 
 .animated {
   -webkit-animation-duration: 1.5s;
