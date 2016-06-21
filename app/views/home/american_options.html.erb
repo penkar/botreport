@@ -3,35 +3,62 @@
 <p>American options will alway be worth as much as European options. They can be worth more depending on expectations of the stock. Changes such as dividends or changes in the market could also contribute. It is worth noting that if an option is exercised earlier you would expect interest income above what you would receive from European options.</p>
 <p>American option pricing completed using binary tree.</p>
 <%= form_tag(american_options_price_path, :method => :post, remote: true) do |f| %>
-	<table>
-		<tbody>
-			<tr>
-				<td>Stock Price (ex. 30)</td>
-				<td><%= text_field_tag :price %></td>
-			</tr>
-			<tr>
-				<td>Strike Price (ex. 25)</td>
-				<td><%= text_field_tag :strike %></td>
-			</tr>
-			<tr>
-				<td>Time to Matrurity (ex. 1.25)</td>
-				<td><%= text_field_tag :time %></td>
-			</tr>
-			<tr>
-				<td>Periods per Year (ex. 12)</td>
-				<td><%= text_field_tag :nper %></td>
-			</tr>
-			<tr>
-				<td>Risk Free Rate (ex. 0.05)</td>
-				<td><%= text_field_tag :rf %></td>
-			</tr>
-			<tr>
-				<td>Volatility (ex. 0.20)</td>
-				<td><%= text_field_tag :vol %></td>
-			</tr>
-		</tbody>
-	</table>
-<%= submit_tag "Create" %>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-3">
+				Stock Price (ex. 30)
+			</div>
+			<div class="col-md-4">
+				<%= text_field_tag :price,nil, class:'form-control' %>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-3">
+				Strike Price (ex. 25)
+			</div>
+			<div class="col-md-4">
+				<%= text_field_tag :strike,nil, class:'form-control' %>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-3">
+				Time to Matrurity (ex. 1.25)
+			</div>
+			<div class="col-md-4">
+				<%= text_field_tag :time,nil, class:'form-control' %>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-3">
+				Periods per Year (ex. 12)
+			</div>
+			<div class="col-md-4">
+				<%= text_field_tag :nper,nil, class:'form-control' %>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-3">
+				Risk Free Rate (ex. 0.05)
+			</div>
+			<div class="col-md-4">
+				<%= text_field_tag :rf,nil, class:'form-control' %>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-3">
+				Volatility (ex. 0.20)
+			</div>
+			<div class="col-md-4">
+				<%= text_field_tag :vol,nil, class:'form-control' %>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-3 col-md-offset-3">
+				<%= submit_tag "Create", class:"btn btn-secondary" %>
+			</div>
+		</div>
+	</div>
+
 <% end %>
 <p>Put Price: <span id='pp'></span></p>
 <p>Call Price: <span id='cp'></span></p>
