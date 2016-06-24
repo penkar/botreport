@@ -5,11 +5,46 @@ Value = Dividend[0] * (1 + Growth) / (Rate of Return - Growth)
 <p>Using any three of these inputs you can figure out the fourth. Fill in the values you have below and the fourth value will be returned to you.</p>
 
 <%= form_tag(ggm_calc_path, :method => :post, remote: true) do |f| %>
-	<%= text_field_tag :value %>: Value<br>
-	<%= text_field_tag :dividend %>: Dividend - Yearly amount starting in the next year.<br>
-	<%= text_field_tag :rate %>: Rate of Return - 0.05 format.<br>
-	<%= text_field_tag :growth %>: Growth - 0.02 format<br>
-	<%= submit_tag "Submit" %>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-3">
+				<%= text_field_tag :value, nil, class:'form-control' %>
+			</div>
+			<div class="col-md-9">
+				Value
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-3">
+				<%= text_field_tag :dividend, nil, class:'form-control' %>
+			</div>
+			<div class="col-md-9">
+				Dividend - Yearly amount starting in the next year.
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-3">
+				<%= text_field_tag :rate, nil, class:'form-control' %>
+			</div>
+			<div class="col-md-9">
+				Rate of Return - 0.05 format.
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-3">
+				<%= text_field_tag :growth, nil, class:'form-control' %>
+			</div>
+			<div class="col-md-9">
+				Growth - 0.02 format
+			</div>
+		</div>
+		<br/>
+		<div class="row">
+			<div class="col-md-3">
+				<%= submit_tag "Submit", class:"btn btn-secondary" %>
+			</div>
+		</div>
+	</div>
 <% end %>
 
 <p>For this equation to work it is assumed that growth cannot exceed the required rate of return. If growth is expected to exceed the required rate of return, a two state dividend discount model is preferable.</p>
