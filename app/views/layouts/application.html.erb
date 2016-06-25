@@ -12,11 +12,12 @@
       <%= link_to 'Bot Report', root_path, class:'navbar-brand' %>
       <div class="pull-xs-right">
         <ul class="nav navbar-nav">
+          <li class="nav-item active"><%= link_to 'Euro Opts', options_path, class:'nav-link' %></li>
+          <li class="nav-item active"><%= link_to 'Amer Opts', american_options_path, class:'nav-link' %></li>
+          <li class="nav-item active"><%= link_to 'GGM', ggm_path, class:'nav-link' %></li>
+
         	<% if current_user %>
             <li class="nav-item active"><%= link_to 'Your Page', user_path(current_user.id), class:'nav-link' %></li>
-            <li class="nav-item active"><%= link_to 'Euro Opts', options_path(current_user.id), class:'nav-link' %></li>
-            <li class="nav-item active"><%= link_to 'Amer Opts', american_options_path(current_user.id), class:'nav-link' %></li>
-            <li class="nav-item active"><%= link_to 'GGM', ggm_path(current_user.id), class:'nav-link' %></li>
           	<li class="nav-item active"><%= link_to 'New Report', new_user_project_path(current_user.id), class:'nav-link' %></li>
           	<li class="nav-item active"><%= link_to 'News', user_projects_path(current_user.id), class:'nav-link' %></li>
             <li class="nav-item active"><%= link_to 'Sign Out', destroy_user_session_path, :method => :delete, class:'nav-link' %></li>

@@ -5,7 +5,6 @@ class HomeController < ApplicationController
   end
 
   def options
-  	@user = current_user.id
   end
 
   def options_price
@@ -16,11 +15,9 @@ class HomeController < ApplicationController
   end
 
   def american_options
-    @user = current_user.id
   end
 
   def american_options_price
-    @user = current_user.id
     option = FinanceEngine::American_Options.new(params['price'].to_f, params['vol'].to_f, params['rf'].to_f, params['strike'].to_f)
     option.build_american_options(1, 4)
     prices = {'put'=> option.tree['original_']['put'], 'call'=>option.tree['original_']['call']}
@@ -28,11 +25,9 @@ class HomeController < ApplicationController
   end
 
   def ggm
-    @user = current_user.id
   end
 
   def ggm_calc
-    @user = current_user.id
     hash = {}
     hash[:dividend]= params["dividend"].to_f if params["dividend"].length>0
     hash[:growth]= params["growth"].to_f if params["growth"].length>0
